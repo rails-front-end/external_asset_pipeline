@@ -50,7 +50,7 @@ const config = {
   plugins: [
     new WebpackAssetsManifest({
       merge: true,
-      output: 'revisioned-asset-manifest.json',
+      output: '.revisioned-asset-manifest.json',
     }),
   ],
   resolve: {

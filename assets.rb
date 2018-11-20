@@ -19,7 +19,7 @@ module WebpackAssetPipeline
     end
 
     def load
-      manifest_file_path = Rails.root.join('public', 'packs', 'revisioned-asset-manifest.json')
+      manifest_file_path = Rails.root.join('public', 'packs', '.revisioned-asset-manifest.json')
       JSON.parse(manifest_file_path.read)
     end
   end
