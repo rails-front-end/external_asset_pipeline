@@ -25,12 +25,12 @@ module ExternalAssetPipeline
   end
 
   def path_to_asset(source, options = {})
-    value_in_webpack_manifest =
+    value_in_asset_manifest =
       ExternalAssetPipeline.manifest.find(pack_name_with_extension(source, options))
 
     super(
-      value_in_webpack_manifest.present? ? "/packs/#{value_in_webpack_manifest}" : source,
-      options.merge(skip_pipeline: value_in_webpack_manifest.present?)
+      value_in_asset_manifest.present? ? "/packs/#{value_in_asset_manifest}" : source,
+      options.merge(skip_pipeline: value_in_asset_manifest.present?)
     )
   end
   alias asset_path path_to_asset
