@@ -1,6 +1,6 @@
 # config/initializers/assets.rb
 
-module WebpackAssetPipeline
+module ExternalAssetPipeline
   mattr_accessor :manifest
 
   class Manifest
@@ -26,7 +26,7 @@ module WebpackAssetPipeline
 
   def path_to_asset(source, options = {})
     value_in_webpack_manifest =
-      WebpackAssetPipeline.manifest.find(pack_name_with_extension(source, options))
+      ExternalAssetPipeline.manifest.find(pack_name_with_extension(source, options))
 
     super(
       value_in_webpack_manifest.present? ? "/packs/#{value_in_webpack_manifest}" : source,
@@ -42,6 +42,6 @@ module WebpackAssetPipeline
   end
 end
 
-WebpackAssetPipeline.manifest = WebpackAssetPipeline::Manifest.new
+ExternalAssetPipeline.manifest = ExternalAssetPipeline::Manifest.new
 
-ActionView::Base.include WebpackAssetPipeline
+ActionView::Base.include ExternalAssetPipeline
