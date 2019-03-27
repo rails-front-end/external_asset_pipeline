@@ -28,10 +28,11 @@ module ExternalAssetPipeline
     value_in_asset_manifest =
       ExternalAssetPipeline.manifest.find(pack_name_with_extension(source, options))
 
-    super(
-      value_in_asset_manifest.present? ? "/packs/#{value_in_asset_manifest}" : source,
-      options.merge(skip_pipeline: value_in_asset_manifest.present?)
-    )
+    if value_in_asset_manifest
+      super("/packs/#{value_in_asset_manifest}", options.merge(skip_pipeline: true))
+    else
+      super(source, options)
+    end
   end
   alias asset_path path_to_asset
 
