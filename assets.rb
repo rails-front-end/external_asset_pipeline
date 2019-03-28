@@ -25,6 +25,8 @@ module ExternalAssetPipeline
   end
 
   def path_to_asset(source, options = {})
+    return super(source, options) if options[:skip_pipeline]
+
     value_in_asset_manifest =
       ExternalAssetPipeline.manifest.find(pack_name_with_extension(source, options))
 
