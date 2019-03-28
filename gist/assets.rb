@@ -19,6 +19,11 @@ module ExternalAssetPipeline
       @manifest_filename = 'manifest.json'
     end
 
+    def configure
+      yield self
+      self
+    end
+
     def manifest_path
       @public_path.join(public_subdirectory, @manifest_filename)
     end
@@ -68,10 +73,11 @@ module ExternalAssetPipeline
   end
 end
 
-configuration = ExternalAssetPipeline::Configuration.new
-configuration.cache_manifest = Rails.application.config.cache_revisioned_asset_manifest
-configuration.manifest_filename = '.revisioned-asset-manifest.json'
-configuration.public_path = Rails.root.join('public')
+configuration = ExternalAssetPipeline::Configuration.new.configure do |config|
+  config.cache_manifest = Rails.application.config.cache_revisioned_asset_manifest
+  config.manifest_filename = '.revisioned-asset-manifest.json'
+  config.public_path = Rails.root.join('public')
+end
 ExternalAssetPipeline.manifest = ExternalAssetPipeline::Manifest.new(configuration)
 
 ActionView::Base.include ExternalAssetPipeline
