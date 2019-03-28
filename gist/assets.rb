@@ -13,7 +13,7 @@ module ExternalAssetPipeline
 
     def initialize
       @assets_prefix = '/packs'
-      @cache_manifest = Rails.application.config.cache_revisioned_asset_manifest
+      @cache_manifest = true
     end
 
     def manifest_path
@@ -65,7 +65,8 @@ module ExternalAssetPipeline
   end
 end
 
-ExternalAssetPipeline.manifest =
-  ExternalAssetPipeline::Manifest.new(ExternalAssetPipeline::Configuration.new)
+configuration = ExternalAssetPipeline::Configuration.new
+configuration.cache_manifest = Rails.application.config.cache_revisioned_asset_manifest
+ExternalAssetPipeline.manifest = ExternalAssetPipeline::Manifest.new(configuration)
 
 ActionView::Base.include ExternalAssetPipeline
