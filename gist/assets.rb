@@ -8,7 +8,8 @@ module ExternalAssetPipeline
   class Configuration
     attr_accessor :assets_prefix,
                   :cache_manifest,
-                  :manifest_filename
+                  :manifest_filename,
+                  :public_path
 
     alias cache_manifest? cache_manifest
 
@@ -19,7 +20,7 @@ module ExternalAssetPipeline
     end
 
     def manifest_path
-      Rails.root.join('public', public_subdirectory, @manifest_filename)
+      @public_path.join(public_subdirectory, @manifest_filename)
     end
 
     private
@@ -70,6 +71,7 @@ end
 configuration = ExternalAssetPipeline::Configuration.new
 configuration.cache_manifest = Rails.application.config.cache_revisioned_asset_manifest
 configuration.manifest_filename = '.revisioned-asset-manifest.json'
+configuration.public_path = Rails.root.join('public')
 ExternalAssetPipeline.manifest = ExternalAssetPipeline::Manifest.new(configuration)
 
 ActionView::Base.include ExternalAssetPipeline
