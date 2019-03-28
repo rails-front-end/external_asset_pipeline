@@ -15,6 +15,16 @@ module ExternalAssetPipeline
       @assets_prefix = '/packs'
       @cache_manifest = Rails.application.config.cache_revisioned_asset_manifest
     end
+
+    def manifest_path
+      Rails.root.join('public', public_subdirectory, '.revisioned-asset-manifest.json')
+    end
+
+    private
+
+    def public_subdirectory
+      @assets_prefix[1..-1]
+    end
   end
 
   class Manifest
@@ -38,8 +48,7 @@ module ExternalAssetPipeline
     end
 
     def load
-      manifest_file_path = Rails.root.join('public', 'packs', '.revisioned-asset-manifest.json')
-      JSON.parse(manifest_file_path.read)
+      JSON.parse(@config.manifest_path.read)
     end
   end
 
