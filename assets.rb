@@ -32,12 +32,10 @@ module ExternalAssetPipeline
   def compute_asset_path(source, _options = {})
     value_in_asset_manifest = ExternalAssetPipeline.manifest.find(source)
 
-    if value_in_asset_manifest
-      "/packs/#{value_in_asset_manifest}"
-    else
-      raise AssetNotFound,
-            "The asset #{source.inspect} is not present in the asset manifest"
-    end
+    return "/packs/#{value_in_asset_manifest}" if value_in_asset_manifest
+
+    raise AssetNotFound,
+          "The asset #{source.inspect} is not present in the asset manifest"
   end
 end
 
