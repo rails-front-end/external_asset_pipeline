@@ -5,6 +5,14 @@ module ExternalAssetPipeline
 
   mattr_accessor :manifest
 
+  class Configuration
+    attr_accessor :assets_prefix
+
+    def initialize
+      @assets_prefix = '/packs'
+    end
+  end
+
   class Manifest
     def initialize(config)
       @config = config
@@ -45,6 +53,6 @@ module ExternalAssetPipeline
 end
 
 ExternalAssetPipeline.manifest =
-  ExternalAssetPipeline::Manifest.new(OpenStruct.new(assets_prefix: '/packs'))
+  ExternalAssetPipeline::Manifest.new(ExternalAssetPipeline::Configuration.new)
 
 ActionView::Base.include ExternalAssetPipeline
