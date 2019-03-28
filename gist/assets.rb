@@ -6,9 +6,13 @@ module ExternalAssetPipeline
   mattr_accessor :manifest
 
   class Manifest
+    def initialize(config)
+      @config = config
+    end
+
     def find(name)
       value = data[name.to_s]
-      "/packs/#{value}" if value
+      "#{@config.assets_prefix}/#{value}" if value
     end
 
     private
@@ -40,6 +44,7 @@ module ExternalAssetPipeline
   end
 end
 
-ExternalAssetPipeline.manifest = ExternalAssetPipeline::Manifest.new
+ExternalAssetPipeline.manifest =
+  ExternalAssetPipeline::Manifest.new(OpenStruct.new(assets_prefix: '/packs'))
 
 ActionView::Base.include ExternalAssetPipeline
