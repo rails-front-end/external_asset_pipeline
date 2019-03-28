@@ -24,24 +24,17 @@ module ExternalAssetPipeline
     end
   end
 
-  def path_to_asset(source, options = {})
-    return super(source, options) if options[:skip_pipeline]
-
-    value_in_asset_manifest =
-      ExternalAssetPipeline.manifest.find(pack_name_with_extension(source, options))
+  # Overrides the built-in `ActionView::Helpers::AssetUrlHelper#compute_asset_path` to use the
+  # external asset pipeline, in the same manner that sprockets-rails does:
+  # https://github.com/rails/sprockets-rails/blob/v3.2.1/lib/sprockets/rails/helper.rb#L74-L96
+  def compute_asset_path(source, options = {})
+    value_in_asset_manifest = ExternalAssetPipeline.manifest.find(source)
 
     if value_in_asset_manifest
-      super("/packs/#{value_in_asset_manifest}", options.merge(skip_pipeline: true))
+      "/packs/#{value_in_asset_manifest}"
     else
       super(source, options)
     end
-  end
-  alias asset_path path_to_asset
-
-  private
-
-  def pack_name_with_extension(name, options)
-    "#{name}#{compute_asset_extname(name, options)}"
   end
 end
 
