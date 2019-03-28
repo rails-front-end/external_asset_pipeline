@@ -6,10 +6,14 @@ module ExternalAssetPipeline
   mattr_accessor :manifest
 
   class Configuration
-    attr_accessor :assets_prefix
+    attr_accessor :assets_prefix,
+                  :cache_manifest
+
+    alias cache_manifest? cache_manifest
 
     def initialize
       @assets_prefix = '/packs'
+      @cache_manifest = Rails.application.config.cache_revisioned_asset_manifest
     end
   end
 
@@ -26,7 +30,7 @@ module ExternalAssetPipeline
     private
 
     def data
-      if Rails.application.config.cache_revisioned_asset_manifest
+      if @config.cache_manifest?
         @data ||= load
       else
         load
