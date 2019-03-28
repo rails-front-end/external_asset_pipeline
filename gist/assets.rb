@@ -15,7 +15,7 @@ module ExternalAssetPipeline
     def initialize
       @assets_prefix = '/packs'
       @cache_manifest = true
-      @manifest_filename = '.revisioned-asset-manifest.json'
+      @manifest_filename = 'manifest.json'
     end
 
     def manifest_path
@@ -69,6 +69,7 @@ end
 
 configuration = ExternalAssetPipeline::Configuration.new
 configuration.cache_manifest = Rails.application.config.cache_revisioned_asset_manifest
+configuration.manifest_filename = '.revisioned-asset-manifest.json'
 ExternalAssetPipeline.manifest = ExternalAssetPipeline::Manifest.new(configuration)
 
 ActionView::Base.include ExternalAssetPipeline
