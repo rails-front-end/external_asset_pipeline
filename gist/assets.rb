@@ -7,17 +7,19 @@ module ExternalAssetPipeline
 
   class Configuration
     attr_accessor :assets_prefix,
-                  :cache_manifest
+                  :cache_manifest,
+                  :manifest_filename
 
     alias cache_manifest? cache_manifest
 
     def initialize
       @assets_prefix = '/packs'
       @cache_manifest = true
+      @manifest_filename = '.revisioned-asset-manifest.json'
     end
 
     def manifest_path
-      Rails.root.join('public', public_subdirectory, '.revisioned-asset-manifest.json')
+      Rails.root.join('public', public_subdirectory, @manifest_filename)
     end
 
     private
