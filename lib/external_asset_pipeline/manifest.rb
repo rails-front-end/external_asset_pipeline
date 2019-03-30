@@ -1,4 +1,6 @@
-# config/initializers/assets.rb
+# frozen_string_literal: true
+
+require 'json'
 
 module ExternalAssetPipeline
   class Manifest
