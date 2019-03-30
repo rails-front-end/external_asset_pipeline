@@ -29,4 +29,6 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{lib}/**/*']
   s.require_paths = ['lib']
+
+  s.add_runtime_dependency 'railties', '>= 5.0.0'
 end
