@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "activestorage": "^5.2.3",
-    "rails-ujs": "^5.2.3"
+    "rails-ujs": "^5.2.3",
+    "turbolinks": "^5.2.0"
   }
 }
