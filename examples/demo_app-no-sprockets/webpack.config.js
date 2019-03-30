@@ -49,7 +49,7 @@ const config = {
     publicPath: `/${entryDir}/`
   },
   plugins: [
-    new WebpackAssetsManifest(),
+    new WebpackAssetsManifest({ merge: true }),
   ],
   resolve: {
     extensions: extensions.map(e => `.${e}`)
