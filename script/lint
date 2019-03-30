@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# script/lint:
+#   Run the linter for the project.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Running rubocop..."
+bundle exec rubocop

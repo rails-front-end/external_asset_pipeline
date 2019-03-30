@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# script/test:
+#   Run test suite for the project.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Running tests..."
+bundle exec rake test
