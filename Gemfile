@@ -6,3 +6,7 @@ gemspec
 
 gem 'minitest', '~> 5.11'
 gem 'rake', '~> 12.3'
+
+group :development, :test do
+  gem 'rubocop'
+end
