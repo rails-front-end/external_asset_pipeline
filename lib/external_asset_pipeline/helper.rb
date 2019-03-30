@@ -12,6 +12,7 @@ module ExternalAssetPipeline
       value_in_asset_manifest = ExternalAssetPipeline.manifest.find(source)
 
       return value_in_asset_manifest if value_in_asset_manifest
+      return super if ExternalAssetPipeline.manifest.fall_back_to_sprockets?
 
       raise AssetNotFound,
             "The asset #{source.inspect} is not present in the asset manifest"

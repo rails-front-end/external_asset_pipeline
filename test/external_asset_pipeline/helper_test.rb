@@ -34,6 +34,20 @@ module ExternalAssetPipeline
       )
     end
 
+    def test_compute_asset_path_with_fallback
+      config = Configuration.new
+      config.public_path = Pathname.new(TEST_APP_PUBLIC_PATH)
+      config.fall_back_to_sprockets = true
+      ExternalAssetPipeline.manifest = Manifest.new(config)
+
+      assert_equal '/packs/application-7b3dc2436f7956c77987.js',
+                   view.compute_asset_path('application.js')
+      assert_equal '/packs/application-2ea8c3891d.css',
+                   view.compute_asset_path('application.css')
+      assert_equal 'fallback_missing-asset.css',
+                   view.compute_asset_path('missing-asset.css')
+    end
+
     private
 
     module FallbackStub
