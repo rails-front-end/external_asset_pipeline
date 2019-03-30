@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module ExternalAssetPipeline
-  class AssetNotFound < StandardError; end
+require 'external_asset_pipeline'
 
+module ExternalAssetPipeline
   module Helper
     # Overrides the built-in
     # `ActionView::Helpers::AssetUrlHelper#compute_asset_path` to use the
