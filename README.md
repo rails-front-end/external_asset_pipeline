@@ -1,5 +1,21 @@
 # ExternalAssetPipeline
 
+The `external_asset_pipeline` gem provides a lightweight and flexible
+integration between rails and any independent asset processor(s) that can
+produce an asset manifest.
+
+It can be used in conjunction with [`sprockets`] or as a complete replacement
+that manages all assets. This is perhaps best illustrated through examples, so
+don't hesitate to check out some demo apps:
+- [examples/demo_app](./examples/demo_app) uses [`webpack`] to process
+javascript assets while `sprockets` handles other assets
+- [examples/demo_app-no-sprockets](./examples/demo_app-no-sprockets) uses
+[`gulp`] in addition to `webpack` to manage all assets without `sprockets`
+
+[`gulp`]: https://gulpjs.com
+[`sprockets`]: https://github.com/rails/sprockets
+[`webpack`]: https://webpack.js.org
+
 ## Installation
 
 Add this line to your application's Gemfile:

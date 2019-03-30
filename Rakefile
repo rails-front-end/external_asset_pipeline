@@ -12,7 +12,8 @@ class ExampleAppCommand
 
   def initialize(command)
     @command = command
-    @example_app_path = File.expand_path('./examples/demo_app', __dir__)
+    example_app = ENV['EXAMPLE_APP'] || 'demo_app'
+    @example_app_path = File.expand_path("./examples/#{example_app}", __dir__)
     @gemfile_path = File.join(@example_app_path, 'Gemfile')
   end
 
@@ -42,7 +43,8 @@ namespace :test do
   Rake::TestTask.new(:unit) do |t|
     t.libs << 'test'
     t.libs << 'lib'
-    t.test_files = FileList['test/**/*_test.rb']
+    t.test_files =
+      FileList['test/**/*_test.rb'].exclude('test/integration/**/*')
   end
 
   desc 'Run integration tests in example app'
