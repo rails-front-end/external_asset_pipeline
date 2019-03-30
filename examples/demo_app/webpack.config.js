@@ -45,13 +45,11 @@ const config = {
   node: false,
   output: {
     filename: '[name]-[hash].js',
-    path: targetRoot
+    path: targetRoot,
+    publicPath: `/${entryDir}/`
   },
   plugins: [
-    new WebpackAssetsManifest({
-      merge: true,
-      output: '.revisioned-asset-manifest.json',
-    }),
+    new WebpackAssetsManifest(),
   ],
   resolve: {
     extensions: extensions.map(e => `.${e}`)
