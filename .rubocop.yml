@@ -1,5 +1,7 @@
 AllCops:
   TargetRubyVersion: 2.4.6
+  Exclude:
+    - examples/**/*
 
 Style/Documentation:
   Enabled: false
