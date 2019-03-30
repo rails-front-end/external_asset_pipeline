@@ -18,7 +18,52 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In `config/application.rb`, after the code that `require`s rails, add:
+
+```ruby
+require 'external_asset_pipeline/railtie'
+```
+
+See an example in
+[`examples/demo_app/config/application.rb`](./examples/demo_app/config/application.rb)
+
+Additionally, in any environments where you don't want the asset manifest to be
+cached (e.g. in development), you should set
+
+```ruby
+config.external_asset_pipeline.cache_manifest = false
+```
+
+See an example in
+[`examples/demo_app/config/environments/development.rb`](./examples/demo_app/config/environments/development.rb)
+
+### Usage together with sprockets
+
+If you'd like to use the `external_asset_pipeline` together with `sprockets`,
+you must also set
+
+```ruby
+config.external_asset_pipeline.fall_back_to_sprockets = true
+````
+
+either in `config/application.rb` or in an initializer (e.g.
+`config/initializers/assets.rb`). This tells your app to first look for an asset
+in the external asset pipeline manifest, and if no asset is found then fall back
+to looking in the sprockets pipeline.
+
+See an example in
+[`examples/demo_app/config/application.rb`](./examples/demo_app/config/application.rb)
+
+### Configuration
+
+By default, the `external_asset_pipeline` will look for an asset manifest in
+`public/packs/manifest.json`. You can configure both the public subdirectory and
+the manifest filename:
+
+```ruby
+config.external_asset_pipeline.assets_prefix = '/static'
+config.external_asset_pipeline.manifest_filename = '.asset-manifest.json'
+```
 
 ## Development
 
