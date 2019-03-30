@@ -28,7 +28,9 @@
     "webpack-cli": "^3.3.0"
   },
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack --watch"
+    "build": "gulp build && webpack",
+    "watch:gulp": "gulp watch",
+    "watch:webpack": "webpack --watch",
+    "watch": "foreman start -f Procfile.dev"
   }
 }

@@ -1,0 +1,7 @@
+# Note: we are using `npm run` rather than `bin/yarn` because yarn does not wait
+# does not forward the SIGTERM signal to its children before exiting:
+#   https://github.com/yarnpkg/yarn/issues/4667
+# which can end up leaving orphaned processes.
+#
+gulp:    npm run watch:gulp
+webpack: npm run watch:webpack
