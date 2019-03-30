@@ -1,7 +1,7 @@
 const gulp = require('gulp');
-const buildImagesTask = require('./build-images');
+const buildStylesTask = require('./build-styles');
 
-const build = gulp.parallel(buildImagesTask);
+const build = gulp.parallel(buildStylesTask);
 
 build.description = 'Build all static assets';
 

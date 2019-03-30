@@ -1,11 +1,11 @@
 const gulp = require('gulp');
 const rev = require('gulp-rev');
 
-function revisionAsset(input) {
+function revisionAsset(input, sourcemapOptions) {
   return (
     input
       .pipe(rev())
-      .pipe(gulp.dest('public/packs'))
+      .pipe(gulp.dest('public/packs', sourcemapOptions))
       .pipe(rev.manifest({
         base: 'public/packs',
         merge: true,
