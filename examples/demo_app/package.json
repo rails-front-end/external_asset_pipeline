@@ -5,5 +5,8 @@
     "activestorage": "^5.2.3",
     "rails-ujs": "^5.2.3",
     "turbolinks": "^5.2.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6"
   }
 }
