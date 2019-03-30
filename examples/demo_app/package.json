@@ -2,6 +2,7 @@
   "name": "demo_app",
   "private": true,
   "dependencies": {
-    "activestorage": "^5.2.3"
+    "activestorage": "^5.2.3",
+    "rails-ujs": "^5.2.3"
   }
 }
