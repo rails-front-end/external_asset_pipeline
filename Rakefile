@@ -60,6 +60,6 @@ namespace :test do
   end
 end
 
-task test: 'test:unit'
+task test: ['test:unit', 'test:integration']
 
 task default: :test
