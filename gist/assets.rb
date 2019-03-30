@@ -1,8 +1,6 @@
 # config/initializers/assets.rb
 
 module ExternalAssetPipeline
-  mattr_accessor :manifest
-
   class Manifest
     def initialize(config)
       @config = config

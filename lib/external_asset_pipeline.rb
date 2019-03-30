@@ -4,5 +4,8 @@ require 'external_asset_pipeline/version'
 
 module ExternalAssetPipeline
   class Error < StandardError; end
-  # Your code goes here...
+
+  class << self
+    attr_accessor :manifest
+  end
 end
