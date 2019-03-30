@@ -13,6 +13,10 @@ module ExternalAssetPipeline
       "#{@config.assets_prefix}/#{value}" if value
     end
 
+    def fall_back_to_sprockets?
+      @config.fall_back_to_sprockets?
+    end
+
     private
 
     def data

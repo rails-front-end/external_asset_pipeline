@@ -14,12 +14,15 @@ module ExternalAssetPipeline
       assert_equal '/packs', config.assets_prefix
       assert_equal true, config.cache_manifest
       assert_equal true, config.cache_manifest?
+      assert_equal false, config.fall_back_to_sprockets
+      assert_equal false, config.fall_back_to_sprockets?
       assert_equal 'manifest.json', config.manifest_filename
       assert_nil config.public_path
 
       result = config.configure do |c|
         c.assets_prefix = '/assets'
         c.cache_manifest = false
+        c.fall_back_to_sprockets = true
         c.manifest_filename = '.revisioned-asset-manifest.json'
         c.public_path = Pathname.new(TEST_APP_PUBLIC_PATH)
       end
@@ -28,6 +31,8 @@ module ExternalAssetPipeline
       assert_equal '/assets', config.assets_prefix
       assert_equal false, config.cache_manifest
       assert_equal false, config.cache_manifest?
+      assert_equal true, config.fall_back_to_sprockets
+      assert_equal true, config.fall_back_to_sprockets?
       assert_equal '.revisioned-asset-manifest.json', config.manifest_filename
       assert_equal Pathname.new(TEST_APP_PUBLIC_PATH), config.public_path
     end

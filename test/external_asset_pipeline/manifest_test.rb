@@ -44,6 +44,17 @@ module ExternalAssetPipeline
       revert_application_js_fingerprint(config.manifest_path)
     end
 
+    def test_fall_back_to_sprockets
+      config = Configuration.new
+      manifest = Manifest.new(config)
+
+      assert_equal false, manifest.fall_back_to_sprockets?
+
+      config.fall_back_to_sprockets = true
+
+      assert_equal true, manifest.fall_back_to_sprockets?
+    end
+
     private
 
     def modify_application_js_fingerprint(manifest_path)
