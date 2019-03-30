@@ -2,7 +2,7 @@ PATH
   remote: ../..
   specs:
     external_asset_pipeline (0.1.0)
-      railties (>= 5.0.0)
+      railties (>= 5.0.0, < 7.0)
 
 GEM
   remote: https://rubygems.org/
