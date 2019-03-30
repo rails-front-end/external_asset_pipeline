@@ -1,5 +1,7 @@
 {
   "name": "demo_app",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "activestorage": "^5.2.3"
+  }
 }
