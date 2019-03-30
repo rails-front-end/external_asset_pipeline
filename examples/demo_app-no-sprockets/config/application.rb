@@ -8,7 +8,6 @@ require 'action_mailer/railtie'
 require 'active_job/railtie'
 require 'action_cable/engine'
 require 'rails/test_unit/railtie'
-require 'sprockets/railtie'
 
 require 'external_asset_pipeline/railtie'
 
@@ -20,8 +19,6 @@ module DemoApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-
-    config.external_asset_pipeline.fall_back_to_sprockets = true
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
