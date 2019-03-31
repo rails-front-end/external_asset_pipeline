@@ -4,6 +4,7 @@ require 'test_helper'
 
 require 'external_asset_pipeline/configuration'
 require 'external_asset_pipeline/dev_server'
+require 'logger'
 require 'net/http'
 require 'rack'
 
@@ -44,6 +45,8 @@ module ExternalAssetPipeline
           lambda do |_|
             [200, { 'Content-Type' => 'application/json' }, ['{"foo":"bar"}']]
           end,
+          AccessLog: [],
+          Logger: Logger.new(nil),
           Port: port
         )
       end
