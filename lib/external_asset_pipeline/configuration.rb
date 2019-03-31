@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
+require 'logger'
+
 module ExternalAssetPipeline
   class Configuration
     attr_accessor :assets_prefix,
                   :cache_manifest,
                   :dev_server,
                   :fall_back_to_sprockets,
+                  :logger,
                   :manifest_filename,
                   :public_path
 
@@ -28,6 +31,7 @@ module ExternalAssetPipeline
       @cache_manifest = true
       @dev_server = DevServerSettings.new
       @fall_back_to_sprockets = false
+      @logger = Logger.new(STDOUT)
       @manifest_filename = 'manifest.json'
     end
 

@@ -3,6 +3,7 @@
 require 'test_helper'
 
 require 'external_asset_pipeline/configuration'
+require 'logger'
 
 module ExternalAssetPipeline
   class ConfigurationTest < Minitest::Test
@@ -56,6 +57,18 @@ module ExternalAssetPipeline
       assert_equal true, config.dev_server.enabled
       assert_equal 'localhost', config.dev_server.host
       assert_equal 9000, config.dev_server.port
+    end
+
+    def test_logger
+      config = Configuration.new
+      new_logger = Logger.new(STDERR)
+
+      assert_instance_of Logger, config.logger
+      refute_equal new_logger, config.logger
+
+      config.logger = new_logger
+
+      assert_equal new_logger, config.logger
     end
 
     def test_manifest_path
