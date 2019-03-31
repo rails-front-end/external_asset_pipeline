@@ -11,7 +11,7 @@ module ExternalAssetPipeline
     def compute_asset_path(source, _options = {})
       value_in_asset_manifest = ExternalAssetPipeline.manifest.find(source)
 
-      return value_in_asset_manifest if value_in_asset_manifest
+      return value_in_asset_manifest[:path] if value_in_asset_manifest
       return super if ExternalAssetPipeline.manifest.fall_back_to_sprockets?
 
       raise AssetNotFound,

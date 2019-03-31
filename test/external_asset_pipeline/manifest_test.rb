@@ -16,9 +16,9 @@ module ExternalAssetPipeline
       manifest = Manifest.new(config)
 
       assert_equal '/packs/application-7b3dc2436f7956c77987.js',
-                   manifest.find('application.js')
+                   manifest.find('application.js')[:path]
       assert_equal '/packs/application-2ea8c3891d.css',
-                   manifest.find('application.css')
+                   manifest.find('application.css')[:path]
       assert_nil manifest.find('missing-asset.css')
     end
 
@@ -29,17 +29,17 @@ module ExternalAssetPipeline
       manifest = Manifest.new(config)
 
       assert_equal '/packs/application-7b3dc2436f7956c77987.js',
-                   manifest.find('application.js')
+                   manifest.find('application.js')[:path]
 
       modify_application_js_fingerprint(config.manifest_path)
 
       assert_equal '/packs/application-7b3dc2436f7956c77987.js',
-                   manifest.find('application.js')
+                   manifest.find('application.js')[:path]
 
       config.cache_manifest = false
 
       assert_equal '/packs/application-22222222222222222222.js',
-                   manifest.find('application.js')
+                   manifest.find('application.js')[:path]
 
       revert_application_js_fingerprint(config.manifest_path)
     end
