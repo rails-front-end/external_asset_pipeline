@@ -11,6 +11,8 @@ module ExternalAssetPipeline
     def compute_asset_path(source, options = {})
       asset = ExternalAssetPipeline.manifest.find(source)
 
+      options[:host] = asset[:host] if asset && asset[:host]
+
       return asset[:path] if asset
       return super if ExternalAssetPipeline.manifest.fall_back_to_sprockets?
 

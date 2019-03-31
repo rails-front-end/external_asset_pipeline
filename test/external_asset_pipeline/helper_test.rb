@@ -5,6 +5,8 @@ require 'test_helper'
 require 'external_asset_pipeline/configuration'
 require 'external_asset_pipeline/manifest'
 require 'external_asset_pipeline/helper'
+require 'external_asset_pipeline/server_double'
+require 'external_asset_pipeline/server_manifest'
 
 module ExternalAssetPipeline
   class HelperTest < Minitest::Test
@@ -46,6 +48,38 @@ module ExternalAssetPipeline
                    view.compute_asset_path('application.css')
       assert_equal 'fallback_missing-asset.css',
                    view.compute_asset_path('missing-asset.css')
+    end
+
+    def test_compute_asset_path_with_host
+      config = Configuration.new
+      config.dev_server.host = 'localhost'
+      config.dev_server.port = 9555
+      server_stub = ServerDouble.new(config.dev_server)
+      server_stub.running = true
+
+      ExternalAssetPipeline.manifest =
+        ServerManifest.new(config: config, server: server_stub)
+
+      options = {}
+      assert_equal '/packs/application-from-server.js',
+                   view.compute_asset_path('application.js', options)
+      assert_equal 'http://localhost:9555', options[:host]
+
+      options = {}
+      assert_equal '/packs/application-from-server.css',
+                   view.compute_asset_path('application.css', options)
+      assert_equal 'http://localhost:9555', options[:host]
+
+      options = {}
+      exception = assert_raises(ExternalAssetPipeline::AssetNotFound) do
+        view.compute_asset_path('missing-asset.css', options)
+      end
+
+      assert_nil options[:host]
+      assert_equal(
+        'The asset "missing-asset.css" is not present in the asset manifest',
+        exception.message
+      )
     end
 
     private
