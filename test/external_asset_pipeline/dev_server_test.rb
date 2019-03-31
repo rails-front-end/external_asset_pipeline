@@ -4,12 +4,29 @@ require 'test_helper'
 
 require 'external_asset_pipeline/configuration'
 require 'external_asset_pipeline/dev_server'
+require 'json'
 require 'logger'
 require 'net/http'
 require 'rack'
 
 module ExternalAssetPipeline
   class DevServerTest < Minitest::Test
+    def test_get
+      config = Configuration::DevServerSettings.new
+      config.host = 'localhost'
+      config.port = 9555
+
+      dev_server = DevServer.new(config)
+
+      server_thread = create_server_thread(config.port)
+      wait_for_server(config.host, config.port)
+
+      assert_equal '{"foo":"/bar"}', dev_server.get('/bar').body
+      assert_equal '{"foo":"/baz"}', dev_server.get('/baz').body
+    ensure
+      server_thread.kill
+    end
+
     def test_origin
       config = Configuration::DevServerSettings.new
       config.host = 'localhost'
@@ -42,8 +59,9 @@ module ExternalAssetPipeline
     def create_server_thread(port)
       Thread.new do
         Rack::Handler::WEBrick.run(
-          lambda do |_|
-            [200, { 'Content-Type' => 'application/json' }, ['{"foo":"bar"}']]
+          lambda do |env|
+            response = JSON.generate(foo: env['PATH_INFO'])
+            [200, { 'Content-Type' => 'application/json' }, [response]]
           end,
           AccessLog: [],
           Logger: Logger.new(nil),

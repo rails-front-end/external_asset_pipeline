@@ -8,6 +8,10 @@ module ExternalAssetPipeline
       @config = config
     end
 
+    def get(path)
+      Net::HTTP.new(@config.host, @config.port).get(path)
+    end
+
     def origin
       "http://#{@config.host}:#{@config.port}"
     end
