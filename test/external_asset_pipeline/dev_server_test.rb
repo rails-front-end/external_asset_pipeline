@@ -28,27 +28,36 @@ module ExternalAssetPipeline
 
       refute_predicate dev_server, :running?
 
-      server_thread = Thread.new do
+      server_thread = create_server_thread(config.port)
+      wait_for_server(config.host, config.port)
+
+      assert_predicate dev_server, :running?
+    ensure
+      server_thread.kill
+    end
+
+    private
+
+    def create_server_thread(port)
+      Thread.new do
         Rack::Handler::WEBrick.run(
           lambda do |_|
             [200, { 'Content-Type' => 'application/json' }, ['{"foo":"bar"}']]
           end,
-          Port: 9555
+          Port: port
         )
       end
+    end
 
+    def wait_for_server(host, port)
       loop do
         begin
-          response = Net::HTTP.start('localhost', 9555) { |http| http.get('/') }
+          response = Net::HTTP.start(host, port) { |http| http.get('/') }
         rescue Errno::ECONNREFUSED
           next
         end
         break if response.is_a?(Net::HTTPSuccess)
       end
-
-      assert_predicate dev_server, :running?
-    ensure
-      server_thread.kill
     end
   end
 end
