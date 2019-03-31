@@ -4,6 +4,8 @@ require 'test_helper'
 
 require 'external_asset_pipeline/configuration'
 require 'external_asset_pipeline/dev_server'
+require 'net/http'
+require 'rack'
 
 module ExternalAssetPipeline
   class DevServerTest < Minitest::Test
@@ -27,9 +29,21 @@ module ExternalAssetPipeline
       refute_predicate dev_server, :running?
 
       server_thread = Thread.new do
-        Socket.tcp_server_loop(config.host, config.port) do |socket, _|
-          socket.close
+        Rack::Handler::WEBrick.run(
+          lambda do |_|
+            [200, { 'Content-Type' => 'application/json' }, ['{"foo":"bar"}']]
+          end,
+          Port: 9555
+        )
+      end
+
+      loop do
+        begin
+          response = Net::HTTP.start('localhost', 9555) { |http| http.get('/') }
+        rescue Errno::ECONNREFUSED
+          next
         end
+        break if response.is_a?(Net::HTTPSuccess)
       end
 
       assert_predicate dev_server, :running?
