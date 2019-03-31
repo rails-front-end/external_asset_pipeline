@@ -10,7 +10,7 @@ module ExternalAssetPipeline
 
     def find(name)
       value = data[name.to_s]
-      "#{@config.assets_prefix}/#{value}" if value
+      { path: "#{@config.assets_prefix}/#{value}" } if value
     end
 
     def fall_back_to_sprockets?

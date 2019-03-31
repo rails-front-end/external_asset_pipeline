@@ -81,6 +81,27 @@ config.external_asset_pipeline.assets_prefix = '/static'
 config.external_asset_pipeline.manifest_filename = '.asset-manifest.json'
 ```
 
+### Using with a dev server
+
+You may also connect the `external_asset_pipeline` to a dev server (e.g.
+[`webpack-dev-server`]). To do so, configure the corresponding `dev_server`
+settings:
+
+```ruby
+config.external_asset_pipeline.dev_server.enabled = true
+config.external_asset_pipeline.dev_server.host = 'localhost'
+config.external_asset_pipeline.dev_server.port = 9000
+```
+
+If the dev server is enabled but not running (i.e. we can't establish a
+connection to that port), the app will automatically fall back to returning
+assets from disk.
+
+See an example in
+[`examples/demo_app/config/environments/development.rb`](./examples/demo_app/config/environments/development.rb)
+
+[`webpack-dev-server`]: https://github.com/webpack/webpack-dev-server
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run

@@ -3,6 +3,7 @@
 require 'test_helper'
 
 require 'external_asset_pipeline/configuration'
+require 'logger'
 
 module ExternalAssetPipeline
   class ConfigurationTest < Minitest::Test
@@ -35,6 +36,39 @@ module ExternalAssetPipeline
       assert_equal true, config.fall_back_to_sprockets?
       assert_equal '.revisioned-asset-manifest.json', config.manifest_filename
       assert_equal Pathname.new(TEST_APP_PUBLIC_PATH), config.public_path
+    end
+
+    def test_dev_server_settings
+      config = Configuration.new
+
+      assert_equal 0.01, config.dev_server.connect_timeout
+      assert_nil config.dev_server.enabled
+      assert_nil config.dev_server.host
+      assert_nil config.dev_server.port
+
+      config.configure do |c|
+        c.dev_server.connect_timeout = 0.5
+        c.dev_server.enabled = true
+        c.dev_server.host = 'localhost'
+        c.dev_server.port = 9000
+      end
+
+      assert_equal 0.5, config.dev_server.connect_timeout
+      assert_equal true, config.dev_server.enabled
+      assert_equal 'localhost', config.dev_server.host
+      assert_equal 9000, config.dev_server.port
+    end
+
+    def test_logger
+      config = Configuration.new
+      new_logger = Logger.new(STDERR)
+
+      assert_instance_of Logger, config.logger
+      refute_equal new_logger, config.logger
+
+      config.logger = new_logger
+
+      assert_equal new_logger, config.logger
     end
 
     def test_manifest_path

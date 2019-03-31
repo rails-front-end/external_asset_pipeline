@@ -8,10 +8,12 @@ module ExternalAssetPipeline
     # `ActionView::Helpers::AssetUrlHelper#compute_asset_path` to use the
     # external asset pipeline, in the same manner that sprockets-rails does:
     # https://github.com/rails/sprockets-rails/blob/v3.2.1/lib/sprockets/rails/helper.rb#L74-L96
-    def compute_asset_path(source, _options = {})
-      value_in_asset_manifest = ExternalAssetPipeline.manifest.find(source)
+    def compute_asset_path(source, options = {})
+      asset = ExternalAssetPipeline.manifest.find(source)
 
-      return value_in_asset_manifest if value_in_asset_manifest
+      options[:host] = asset[:host] if asset && asset[:host]
+
+      return asset[:path] if asset
       return super if ExternalAssetPipeline.manifest.fall_back_to_sprockets?
 
       raise AssetNotFound,

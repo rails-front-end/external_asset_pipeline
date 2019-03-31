@@ -11,8 +11,20 @@ const targetRoot = path.resolve(__dirname, `./public/${entryDir}`);
 const extensions = ['js', 'jsx', 'ts', 'tsx'];
 const mode = process.env.NODE_ENV || 'development';
 
+const devServerPort = 9000;
+const isDevServer = process.argv.find(v => v.includes('webpack-dev-server'));
+const publicPath =
+  isDevServer ? `http://localhost:${devServerPort}/${entryDir}/` : `/${entryDir}/`;
+
 const config = {
   context: entryRoot,
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    hot: false,
+    inline: false,
+    port: devServerPort,
+    publicPath
+  },
   entry: async () => {
     const globPromise = util.promisify(glob);
     const paths = await globPromise(`${entryRoot}/**/*.{${extensions.join(',')}}`);
@@ -46,7 +58,7 @@ const config = {
   output: {
     filename: '[name]-[hash].js',
     path: targetRoot,
-    publicPath: `/${entryDir}/`
+    publicPath
   },
   plugins: [
     new WebpackAssetsManifest(),

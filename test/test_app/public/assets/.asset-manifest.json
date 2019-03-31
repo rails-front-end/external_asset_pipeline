@@ -1,0 +1,6 @@
+{
+  "application.css": "application-3rd-manifest.css",
+  "application.js": "application-3rd-manifest.js",
+  "foo.js": "foo-3rd-manifest.js",
+  "unique.css": "unique-3rd-manifest.css"
+}
