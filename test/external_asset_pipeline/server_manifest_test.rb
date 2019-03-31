@@ -3,7 +3,7 @@
 require 'test_helper'
 
 require 'external_asset_pipeline/configuration'
-require 'external_asset_pipeline/dev_server'
+require 'external_asset_pipeline/server_double'
 require 'external_asset_pipeline/server_manifest'
 require 'json'
 
@@ -55,26 +55,6 @@ module ExternalAssetPipeline
       def warn(message)
         @messages ||= []
         @messages << message
-      end
-    end
-
-    class ServerDouble < DevServer
-      attr_accessor :running
-      attr_reader :path
-
-      def get(path)
-        @path = path
-
-        Struct.new(:body).new(
-          JSON.generate(
-            'application.js' => 'application-from-server.js',
-            'application.css' => 'application-from-server.css'
-          )
-        )
-      end
-
-      def running?
-        running
       end
     end
   end
