@@ -11,8 +11,11 @@ don't hesitate to check out some demo apps:
 javascript assets while `sprockets` handles other assets
 - [examples/demo_app-no-sprockets](./examples/demo_app-no-sprockets) uses
 [`gulp`] in addition to `webpack` to manage all assets without `sprockets`
+- [examples/demo_app-rollup](./examples/demo_app-rollup) uses [`rollup`] instead
+of `webpack` to process javascript assets
 
 [`gulp`]: https://gulpjs.com
+[`rollup`]: https://rollupjs.org
 [`sprockets`]: https://github.com/rails/sprockets
 [`webpack`]: https://webpack.js.org
 
