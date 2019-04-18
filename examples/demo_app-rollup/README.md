@@ -1,11 +1,11 @@
-# ExternalAssetPipeline Demo with Webpack
+# ExternalAssetPipeline Demo with Rollup
 
-This example uses [`webpack`] with [`webpack-assets-manifest`] to build the
+This example uses [`rollup`] with [`rollup-plugin-fingerprint`] to build the
 assets and generate the manifest. Refer to the [`package.json`](./package.json)
-and [`webpack.config.js`](./webpack.config.js) to see the specifics.
+and [`rollup.config.js`](./rollup.config.js) to see the specifics.
 
-[`webpack`]: https://webpack.js.org
-[`webpack-assets-manifest`]: https://github.com/webdeveric/webpack-assets-manifest
+[`rollup`]: https://rollupjs.org
+[`rollup-plugin-fingerprint`]: https://github.com/rmacklin/rollup-plugin-fingerprint
 
 ## Working with assets
 
