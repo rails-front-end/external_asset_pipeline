@@ -18,7 +18,7 @@
     "rollup-plugin-terser": "^4.0.4"
   },
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack --watch"
+    "build": "rollup -c",
+    "watch": "rollup -c --watch"
   }
 }
