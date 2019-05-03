@@ -25,7 +25,8 @@ class ExternalAssetPipelineIntegrationTest < ActionDispatch::IntegrationTest
     skip unless app_has_dev_server_enabled?
 
     dev_server_thread = create_server_thread(9000)
-    wait_for_server('localhost', 9000)
+    dev_server_host = ENV['DEV_SERVER_HOST'] || 'localhost'
+    wait_for_server(dev_server_host, 9000)
 
     get root_url
 
@@ -34,7 +35,7 @@ class ExternalAssetPipelineIntegrationTest < ActionDispatch::IntegrationTest
     manifest_hash =
       JSON.parse(Rails.root.join('public', 'packs', 'manifest.json').read)
     script_path =
-      "http://localhost:9000/packs/#{manifest_hash['application.js']}"
+      "http://#{dev_server_host}:9000/packs/#{manifest_hash['application.js']}"
 
     assert_select 'script' do |elements|
       assert_equal script_path, elements[0][:src]
