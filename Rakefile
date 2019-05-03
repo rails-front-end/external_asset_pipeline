@@ -55,7 +55,10 @@ namespace :test do
   namespace :integration do
     desc 'Resolve and install dependencies and build assets in example app'
     task :prepare do
-      ExampleAppCommand.run('bundle check || bundle install')
+      bundle_args = ENV['INTEGRATION_BUNDLE_ARGS']
+      ExampleAppCommand.run(
+        "bundle check #{bundle_args} || bundle install #{bundle_args}"
+      )
       ExampleAppCommand.run('bin/yarn')
       ExampleAppCommand.run('bin/yarn build')
     end
