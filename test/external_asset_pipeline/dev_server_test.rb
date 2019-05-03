@@ -30,17 +30,17 @@ module ExternalAssetPipeline
     def test_origin
       config = Configuration::DevServerSettings.new
       config.host = ENV['DEV_SERVER_HOST'] || 'localhost'
-      config.port = 9555
+      config.port = 9666
 
       dev_server = DevServer.new(config)
 
-      assert_equal "http://#{config.host}:9555", dev_server.origin
+      assert_equal "http://#{config.host}:9666", dev_server.origin
     end
 
     def test_running
       config = Configuration::DevServerSettings.new
       config.host = ENV['DEV_SERVER_HOST'] || 'localhost'
-      config.port = 9555
+      config.port = 9777
 
       dev_server = DevServer.new(config)
 
