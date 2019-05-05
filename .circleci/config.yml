@@ -1,0 +1,86 @@
+version: 2.1
+
+executors:
+  ruby_2_5_5_executor:
+    docker:
+      - image: circleci/ruby:2.5.5-node
+  ruby_2_6_3_executor:
+    docker:
+      - image: circleci/ruby:2.6.3-node
+
+jobs:
+  test:
+    parameters:
+      executor:
+        description: The executor to use
+        type: string
+      example_app:
+        description: The example app to use for the integration tests
+        type: string
+        default: demo_app
+      include_linting:
+        description: Whether or not to run the linter in addition to the tests
+        type: boolean
+        default: false
+    executor: << parameters.executor >>
+    environment:
+      DEV_SERVER_HOST: 127.0.0.1
+      EXAMPLE_APP: << parameters.example_app >>
+      INTEGRATION_BUNDLE_ARGS: --path vendor/bundle
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - << parameters.executor >>-vendor-bundle-{{ checksum "Gemfile" }}-{{ checksum "external_asset_pipeline.gemspec" }}-{{ .Environment.CACHE_VERSION }}
+      - run: bundle check --path vendor/bundle || bundle install --path vendor/bundle
+      - save_cache:
+          key: << parameters.executor >>-vendor-bundle-{{ checksum "Gemfile" }}-{{ checksum "external_asset_pipeline.gemspec" }}-{{ .Environment.CACHE_VERSION }}
+          paths:
+            - vendor/bundle
+      - restore_cache:
+          keys:
+            - << parameters.executor >>-<< parameters.example_app >>-vendor-bundle-{{ checksum "examples/<< parameters.example_app >>/Gemfile.lock" }}-{{ .Environment.CACHE_VERSION }}
+      - restore_cache:
+          keys:
+            - << parameters.executor >>-<< parameters.example_app >>-node-modules-{{ checksum "examples/<< parameters.example_app >>/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+      - run: bundle exec rake test:integration:prepare
+      - save_cache:
+          key: << parameters.executor >>-<< parameters.example_app >>-vendor-bundle-{{ checksum "examples/<< parameters.example_app >>/Gemfile.lock" }}-{{ .Environment.CACHE_VERSION }}
+          paths:
+            - examples/<< parameters.example_app >>/vendor/bundle
+      - save_cache:
+          key: << parameters.executor >>-<< parameters.example_app >>-node-modules-{{ checksum "examples/<< parameters.example_app >>/yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+          paths:
+            - examples/<< parameters.example_app >>/node_modules
+      - run: script/test <<# parameters.include_linting >>&& script/lint<</ parameters.include_linting >>
+
+workflows:
+  test_ruby_2_5:
+    jobs:
+      - test:
+          executor: ruby_2_5_5_executor
+          include_linting: true
+  test_ruby_2_5_no_sprockets:
+    jobs:
+      - test:
+          executor: ruby_2_5_5_executor
+          example_app: demo_app-no-sprockets
+  test_ruby_2_5_rollup:
+    jobs:
+      - test:
+          executor: ruby_2_5_5_executor
+          example_app: demo_app-rollup
+  test_ruby_2_6:
+    jobs:
+      - test:
+          executor: ruby_2_6_3_executor
+  test_ruby_2_6_no_sprockets:
+    jobs:
+      - test:
+          executor: ruby_2_6_3_executor
+          example_app: demo_app-no-sprockets
+  test_ruby_2_6_rollup:
+    jobs:
+      - test:
+          executor: ruby_2_6_3_executor
+          example_app: demo_app-rollup
