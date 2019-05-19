@@ -13,7 +13,7 @@ module ExternalAssetPipeline
     end
 
     def origin
-      "http://#{@config.host}:#{@config.port}"
+      @config.public_origin || "http://#{@config.host}:#{@config.port}"
     end
 
     def running?

@@ -19,7 +19,8 @@ module ExternalAssetPipeline
       attr_accessor :connect_timeout,
                     :enabled,
                     :host,
-                    :port
+                    :port,
+                    :public_origin
 
       def initialize
         @connect_timeout = 0.01

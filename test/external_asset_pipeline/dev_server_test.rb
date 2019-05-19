@@ -35,6 +35,14 @@ module ExternalAssetPipeline
       dev_server = DevServer.new(config)
 
       assert_equal "http://#{config.host}:9666", dev_server.origin
+
+      config.public_origin = 'http://myapp.test:4444'
+
+      assert_equal 'http://myapp.test:4444', dev_server.origin
+
+      config.public_origin = nil
+
+      assert_equal "http://#{config.host}:9666", dev_server.origin
     end
 
     def test_running

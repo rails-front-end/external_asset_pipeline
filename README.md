@@ -96,12 +96,22 @@ config.external_asset_pipeline.dev_server.host = 'localhost'
 config.external_asset_pipeline.dev_server.port = 9000
 ```
 
+You may _optionally_ also configure the `dev_server.public_origin` setting,
+which will be used to generate the URLs in your asset tags. If this isn't set,
+the asset origin defaults to `"http://#{dev_server.host}:#{dev_server.port}"`,
+so `public_origin` only needs to be set if that default doesn't work <sup>1</sup>.
+
 If the dev server is enabled but not running (i.e. we can't establish a
 connection to that port), the app will automatically fall back to returning
 assets from disk.
 
 See an example in
 [`examples/demo_app/config/environments/development.rb`](./examples/demo_app/config/environments/development.rb)
+
+<sup><sup>1</sup> For example, if you're running everything in docker containers
+then the origin from which the browser requests assets may be different than the
+origin that the rails container uses to request the manifest from the dev server
+container.</sup>
 
 [`webpack-dev-server`]: https://github.com/webpack/webpack-dev-server
 
