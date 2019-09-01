@@ -1,3 +1,9 @@
+PATH
+  remote: ../..
+  specs:
+    external_asset_pipeline (0.3.0)
+      railties (>= 5.0.0, < 7.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -198,6 +204,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  external_asset_pipeline!
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
