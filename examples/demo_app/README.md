@@ -1,24 +1,22 @@
-# README
+# ExternalAssetPipeline Demo with Webpack
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This example uses [`webpack`] with [`webpack-assets-manifest`] to build the
+assets and generate the manifest. Refer to the [`package.json`](./package.json)
+and [`webpack.config.js`](./webpack.config.js) to see the specifics.
 
-Things you may want to cover:
+[`webpack`]: https://webpack.js.org
+[`webpack-assets-manifest`]: https://github.com/webdeveric/webpack-assets-manifest
 
-* Ruby version
+## Working with assets
 
-* System dependencies
+### Watch mode (incremental recompilation)
 
-* Configuration
+`bin/yarn watch`
 
-* Database creation
+### Development build
 
-* Database initialization
+`bin/yarn build`
 
-* How to run the test suite
+### Production build
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`NODE_ENV=production bin/yarn build`
