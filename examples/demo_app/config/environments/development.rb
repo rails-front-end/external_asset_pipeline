@@ -56,6 +56,11 @@ Rails.application.configure do
   # Avoid caching the external asset pipeline manifest
   config.external_asset_pipeline.cache_manifest = false
 
+  # Enable the external asset pipeline dev server
+  config.external_asset_pipeline.dev_server.enabled = true
+  config.external_asset_pipeline.dev_server.host = 'localhost'
+  config.external_asset_pipeline.dev_server.port = 9000
+
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 
