@@ -638,14 +638,14 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@rails/activestorage@^6.0.0-alpha":
+"@rails/activestorage@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-6.0.0.tgz#6d9cc98f3dcf195c38ca65e80acd2e759336dd7a"
   integrity sha512-RZqTVlUYSWcI88pSJ7ImuTtDYQvqVc2PNuOo+5R3hcVupD+d2TO8xmluqQ5TvByjPqKX4acEK0mjEIK5ip9kCg==
   dependencies:
     spark-md5 "^3.0.0"
 
-"@rails/ujs@^6.0.0-alpha":
+"@rails/ujs@^6.0.0":
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.0.tgz#6c1957870ba075f7e82fdf875f5ed2181ff9355e"
   integrity sha512-0oh/MnpZzluItU/vgaxZv+JtMXxOtA0HPK6ZiMoPd2sLH06q58QdCKPVlC36YMnP4451rcrvxO6xns3w97C1og==
