@@ -44,7 +44,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  # Enable the external asset pipeline dev server
+  # Enable the external asset pipeline dev server.
   config.external_asset_pipeline.dev_server.enabled = true
   config.external_asset_pipeline.dev_server.host = ENV['DEV_SERVER_HOST'] || 'localhost'
   config.external_asset_pipeline.dev_server.port = 9000

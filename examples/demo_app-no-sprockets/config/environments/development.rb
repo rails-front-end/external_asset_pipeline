@@ -45,7 +45,7 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
-  # Avoid caching the external asset pipeline manifest
+  # Avoid caching the external asset pipeline manifest.
   config.external_asset_pipeline.cache_manifest = false
 
   # Raises error for missing translations.

@@ -53,7 +53,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  # Avoid caching the external asset pipeline manifest
+  # Avoid caching the external asset pipeline manifest.
   config.external_asset_pipeline.cache_manifest = false
 
   # Raises error for missing translations.

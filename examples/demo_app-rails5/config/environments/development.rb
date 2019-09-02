@@ -52,10 +52,10 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  # Avoid caching the external asset pipeline manifest
+  # Avoid caching the external asset pipeline manifest.
   config.external_asset_pipeline.cache_manifest = false
 
-  # Enable the external asset pipeline dev server
+  # Enable the external asset pipeline dev server.
   config.external_asset_pipeline.dev_server.enabled = true
   config.external_asset_pipeline.dev_server.host = 'localhost'
   config.external_asset_pipeline.dev_server.port = 9000
