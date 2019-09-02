@@ -65,6 +65,11 @@ workflows:
       - test:
           executor: ruby_2_5_5_executor
           example_app: demo_app-no-sprockets
+  test_ruby_2_5_rails5:
+    jobs:
+      - test:
+          executor: ruby_2_5_5_executor
+          example_app: demo_app-rails5
   test_ruby_2_5_rollup:
     jobs:
       - test:
@@ -79,6 +84,11 @@ workflows:
       - test:
           executor: ruby_2_6_3_executor
           example_app: demo_app-no-sprockets
+  test_ruby_2_6_rails5:
+    jobs:
+      - test:
+          executor: ruby_2_6_3_executor
+          example_app: demo_app-rails5
   test_ruby_2_6_rollup:
     jobs:
       - test:
