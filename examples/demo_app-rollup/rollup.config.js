@@ -11,7 +11,7 @@ const plugins = [
   resolve(),
   commonjs({
     namedExports: {
-      activestorage: ['start']
+      '@rails/activestorage': ['start']
     }
   }),
   babel()
