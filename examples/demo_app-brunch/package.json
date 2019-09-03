@@ -13,7 +13,8 @@
     "brunch": "^2.10.17",
     "fingerprint-brunch": "^2.0.7",
     "glob": "^7.1.4",
-    "node-sass-asset-functions": "^0.1.0"
+    "node-sass-asset-functions": "^0.1.0",
+    "sass-brunch": "^2.10.8"
   },
   "scripts": {
     "build": "gulp build && webpack",
