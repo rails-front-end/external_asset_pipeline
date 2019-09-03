@@ -2546,13 +2546,6 @@ graceful-fs@^4.0.0, graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
   integrity sha512-6uHUhOPEBgQ24HM+r6b/QwWfZq+yiFcipKFrOFiBEnWdy5sdzYoi+pJeQaPI5qOLRFqWmAXUPQNsielzdLoecA==
 
-gulp-changed-in-place@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/gulp-changed-in-place/-/gulp-changed-in-place-2.3.0.tgz#de4150c276d8c0052451caf2f0c7d2be17e76888"
-  integrity sha1-3kFQwnbYwAUkUcry8MfSvhfnaIg=
-  dependencies:
-    through2 "^2.0.0"
-
 gulp-cli@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/gulp-cli/-/gulp-cli-2.2.0.tgz#5533126eeb7fe415a7e3e84a297d334d5cf70ebc"
