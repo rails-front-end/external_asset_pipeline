@@ -11,7 +11,6 @@
     "@babel/preset-env": "^7.5.5",
     "glob": "^7.1.4",
     "gulp": "^4.0.2",
-    "gulp-postcss": "^8.0.0",
     "gulp-rev": "^9.0.0",
     "gulp-rev-rewrite": "^1.1.4",
     "gulp-sass": "^4.0.2",
