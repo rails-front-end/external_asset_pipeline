@@ -9,6 +9,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "babel-brunch": "^7.0.1",
     "brunch": "^2.10.17",
     "fingerprint-brunch": "^2.0.7",
     "glob": "^7.1.4",
