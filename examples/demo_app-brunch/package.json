@@ -19,9 +19,7 @@
     "terser-brunch": "^3.0.0"
   },
   "scripts": {
-    "build": "gulp build && webpack",
-    "watch:gulp": "gulp watch",
-    "watch:webpack": "webpack --watch",
-    "watch": "foreman start -f Procfile.dev"
+    "build": "brunch build",
+    "watch": "brunch watch"
   }
 }
