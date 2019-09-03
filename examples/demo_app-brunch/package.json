@@ -9,6 +9,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "brunch": "^2.10.17",
     "glob": "^7.1.4",
     "node-sass-asset-functions": "^0.1.0"
   },
