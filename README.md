@@ -9,6 +9,8 @@ that manages all assets. This is perhaps best illustrated through examples, so
 don't hesitate to check out some demo apps:
 - [examples/demo_app](./examples/demo_app) uses [`webpack`] to process
 javascript assets while `sprockets` handles other assets
+  - [examples/demo_app-rails5](./examples/demo_app-rails5) is the same app but
+    using rails 5 instead of rails 6 (`external_asset_pipeline` supports both)
 - [examples/demo_app-no-sprockets](./examples/demo_app-no-sprockets) uses
 [`gulp`] in addition to `webpack` to manage all assets without `sprockets`
 - [examples/demo_app-rollup](./examples/demo_app-rollup) uses [`rollup`] instead

@@ -1,6 +1,7 @@
-# ExternalAssetPipeline Demo with Webpack
+# ExternalAssetPipeline Demo with Webpack (using Rails 5)
 
-This example uses [`webpack`] with [`webpack-assets-manifest`] to build the
+This example is the same as [`demo_app`](../demo_app) but using rails 5 (instead
+of rails 6). It uses [`webpack`] with [`webpack-assets-manifest`] to build the
 assets and generate the manifest. Refer to the [`package.json`](./package.json)
 and [`webpack.config.js`](./webpack.config.js) to see the specifics.
 
