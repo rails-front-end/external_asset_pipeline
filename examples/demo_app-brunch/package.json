@@ -1,0 +1,36 @@
+{
+  "name": "demo_app",
+  "private": true,
+  "dependencies": {
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "turbolinks": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@rmacklin/sass-graph": "^3.0.3-pr100",
+    "babel-loader": "^8.0.6",
+    "cssnano": "^4.1.10",
+    "glob": "^7.1.4",
+    "gulp": "^4.0.2",
+    "gulp-cached": "^1.1.1",
+    "gulp-changed-in-place": "^2.3.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rev": "^9.0.0",
+    "gulp-rev-rewrite": "^1.1.4",
+    "gulp-sass": "^4.0.2",
+    "node-sass-asset-functions": "^0.1.0",
+    "require-dir": "^1.2.0",
+    "touch": "^3.1.0",
+    "webpack": "^4.39.3",
+    "webpack-assets-manifest": "^3.1.1",
+    "webpack-cli": "^3.3.7"
+  },
+  "scripts": {
+    "build": "gulp build && webpack",
+    "watch:gulp": "gulp watch",
+    "watch:webpack": "webpack --watch",
+    "watch": "foreman start -f Procfile.dev"
+  }
+}
