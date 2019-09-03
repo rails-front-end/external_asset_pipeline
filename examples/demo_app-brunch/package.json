@@ -12,8 +12,7 @@
     "glob": "^7.1.4",
     "node-sass-asset-functions": "^0.1.0",
     "require-dir": "^1.2.0",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "webpack": "^4.39.3"
   },
   "scripts": {
     "build": "gulp build && webpack",
