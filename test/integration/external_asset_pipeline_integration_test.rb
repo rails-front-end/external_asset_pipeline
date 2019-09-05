@@ -51,7 +51,7 @@ class ExternalAssetPipelineIntegrationTest < ActionDispatch::IntegrationTest
   private
 
   def app_uses_sprockets?
-    !Rails.root.to_s.include?('demo_app-no-sprockets')
+    defined?(Sprockets::Railtie)
   end
 
   def app_has_dev_server_enabled?
