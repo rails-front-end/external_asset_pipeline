@@ -60,6 +60,11 @@ workflows:
       - test:
           executor: ruby_2_5_5_executor
           include_linting: true
+  test_ruby_2_5_brunch:
+    jobs:
+      - test:
+          executor: ruby_2_5_5_executor
+          example_app: demo_app-brunch
   test_ruby_2_5_gulp:
     jobs:
       - test:
@@ -79,6 +84,11 @@ workflows:
     jobs:
       - test:
           executor: ruby_2_6_3_executor
+  test_ruby_2_6_brunch:
+    jobs:
+      - test:
+          executor: ruby_2_6_3_executor
+          example_app: demo_app-brunch
   test_ruby_2_6_gulp:
     jobs:
       - test:
