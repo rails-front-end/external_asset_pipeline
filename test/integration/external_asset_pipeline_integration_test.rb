@@ -50,15 +50,19 @@ class ExternalAssetPipelineIntegrationTest < ActionDispatch::IntegrationTest
 
   private
 
+  def app_uses_sprockets?
+    defined?(Sprockets::Railtie)
+  end
+
   def app_has_dev_server_enabled?
     Rails.application.config.external_asset_pipeline.dev_server.enabled
   end
 
   def stylesheet_href_matcher
-    if Rails.root.to_s.include?('demo_app-no-sprockets')
-      %r[^/packs/application-.{10}\.css$]
-    else
+    if app_uses_sprockets?
       %r[^/assets/application-.{64}\.css$]
+    else
+      %r[^/packs/application-.{10}\.css$]
     end
   end
 

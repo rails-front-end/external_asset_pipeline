@@ -1,0 +1,25 @@
+{
+  "name": "demo_app",
+  "private": true,
+  "dependencies": {
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "turbolinks": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-brunch": "^7.0.1",
+    "brunch": "^2.10.17",
+    "clean-css-brunch": "^2.10.0",
+    "fingerprint-brunch": "^2.0.7",
+    "glob": "^7.1.4",
+    "node-sass-asset-functions": "^0.1.0",
+    "sass-brunch": "^2.10.8",
+    "terser-brunch": "^3.0.0"
+  },
+  "scripts": {
+    "build": "brunch build",
+    "watch": "brunch watch"
+  }
+}
