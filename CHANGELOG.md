@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.0
+
+Add `prepend_assets_prefix_to_manifest_values` setting to support manifests
+whose values already include the assets prefix.
+
 ## 0.3.0
 
 Add `dev_server.public_origin` setting to support the use case where different
