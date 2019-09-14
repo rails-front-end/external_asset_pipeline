@@ -22,6 +22,30 @@ module ExternalAssetPipeline
       assert_nil manifest.find('missing-asset.css')
     end
 
+    def test_find_when_manifest_values_include_prefix
+      config = Configuration.new
+      config.public_path = Pathname.new(TEST_APP_PUBLIC_PATH)
+      config.manifest_filename = 'manifest_with_prefixed_values.json'
+
+      manifest = Manifest.new(config)
+
+      # The assets prefix will always be prepended unless
+      # `config.prepend_assets_prefix_to_manifest_values` is set to `false`
+      assert_equal '/packs//packs/application-7b3dc2436f7956c77987.js',
+                   manifest.find('application.js')[:path]
+      assert_equal '/packs//packs/application-2ea8c3891d.css',
+                   manifest.find('application.css')[:path]
+      assert_nil manifest.find('missing-asset.css')
+
+      config.prepend_assets_prefix_to_manifest_values = false
+
+      assert_equal '/packs/application-7b3dc2436f7956c77987.js',
+                   manifest.find('application.js')[:path]
+      assert_equal '/packs/application-2ea8c3891d.css',
+                   manifest.find('application.css')[:path]
+      assert_nil manifest.find('missing-asset.css')
+    end
+
     def test_manifest_caching
       config = Configuration.new
       config.public_path = Pathname.new(TEST_APP_PUBLIC_PATH)

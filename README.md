@@ -89,6 +89,45 @@ config.external_asset_pipeline.assets_prefix = '/static'
 config.external_asset_pipeline.manifest_filename = '.asset-manifest.json'
 ```
 
+### Usage with a manifest whose values already include the `assets_prefix`
+
+By default, the `external_asset_pipeline` assumes that the manifest file
+contains values which are not already prefixed by the `assets_prefix`. For
+example, it assumes the manifest looks like:
+
+```json
+{
+  "application.css": "application-2ea8c3891d.css",
+  "application.js": "application-7b3dc2436f7956c77987.js"
+}
+```
+
+rather than:
+
+```json
+{
+  "application.css": "/packs/application-2ea8c3891d.css",
+  "application.js": "/packs/application-7b3dc2436f7956c77987.js"
+}
+```
+
+This assumption aligns with the default behavior of the
+[`webpack-assets-manifest` plugin] when no options are passed. However, if your
+manifest values include the assets prefix, as in the latter example (e.g. if you
+set the `publicPath` option to `true` or to `'/packs/'` when instantiating the
+`WebpackAssetsManifest` plugin), then you should set the
+`prepend_assets_prefix_to_manifest_values` configuration option to `false`:
+
+```ruby
+config.external_asset_pipeline.prepend_assets_prefix_to_manifest_values = false
+```
+
+This will instruct the `external_asset_pipeline` to _not_ prepend the assets
+prefix to your manifest values (otherwise, it would return doubly-prefixed paths
+like `/packs//packs/application-2ea8c3891d.css`).
+
+[`webpack-assets-manifest` plugin]: https://github.com/webdeveric/webpack-assets-manifest/blob/v3.1.1/readme.md#publicpath
+
 ### Using with a dev server
 
 You may also connect the `external_asset_pipeline` to a dev server (e.g.
