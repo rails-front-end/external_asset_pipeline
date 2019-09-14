@@ -10,6 +10,7 @@ module ExternalAssetPipeline
                   :fall_back_to_sprockets,
                   :logger,
                   :manifest_filename,
+                  :prepend_assets_prefix_to_manifest_values,
                   :public_path
 
     alias cache_manifest? cache_manifest
@@ -34,6 +35,7 @@ module ExternalAssetPipeline
       @fall_back_to_sprockets = false
       @logger = Logger.new(STDOUT)
       @manifest_filename = 'manifest.json'
+      @prepend_assets_prefix_to_manifest_values = true
     end
 
     def configure
