@@ -38,6 +38,10 @@ module ExternalAssetPipeline
       @prepend_assets_prefix_to_manifest_values = true
     end
 
+    def manifest_value_prefix
+      @prepend_assets_prefix_to_manifest_values ? "#{@assets_prefix}/" : ''
+    end
+
     def configure
       yield self
       self

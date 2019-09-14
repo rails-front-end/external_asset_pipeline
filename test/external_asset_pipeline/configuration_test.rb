@@ -99,5 +99,15 @@ module ExternalAssetPipeline
 
       assert_equal expected_manifest_path, config.manifest_path
     end
+
+    def test_manifest_value_prefix
+      config = Configuration.new
+
+      assert_equal '/packs/', config.manifest_value_prefix
+
+      config.prepend_assets_prefix_to_manifest_values = false
+
+      assert_equal '', config.manifest_value_prefix
+    end
   end
 end
