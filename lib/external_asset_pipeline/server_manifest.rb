@@ -18,10 +18,6 @@ module ExternalAssetPipeline
 
     private
 
-    def data
-      load
-    end
-
     def load
       if @server.running?
         manifest_path = "#{@config.assets_prefix}/#{@config.manifest_filename}"

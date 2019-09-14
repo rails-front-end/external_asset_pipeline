@@ -13,6 +13,7 @@ module ExternalAssetPipeline
 
     def setup
       @config = Configuration.new
+      @config.cache_manifest = false
       @config.dev_server.host = 'localhost'
       @config.dev_server.port = 9555
       @config.logger = LoggerDouble.new
