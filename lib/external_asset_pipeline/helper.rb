@@ -9,12 +9,13 @@ module ExternalAssetPipeline
     # external asset pipeline, in the same manner that sprockets-rails does:
     # https://github.com/rails/sprockets-rails/blob/v3.2.1/lib/sprockets/rails/helper.rb#L74-L96
     def compute_asset_path(source, options = {})
-      asset = ExternalAssetPipeline.manifest.find(source)
+      manifest = ExternalAssetPipeline.manifest
+      asset = manifest.find(source)
 
       options[:host] = asset[:host] if asset && asset[:host]
 
       return asset[:path] if asset
-      return super if ExternalAssetPipeline.manifest.fall_back_to_sprockets?
+      return super if manifest.fall_back_to_sprockets?
 
       raise AssetNotFound,
             "The asset #{source.inspect} is not present in the asset manifest"
