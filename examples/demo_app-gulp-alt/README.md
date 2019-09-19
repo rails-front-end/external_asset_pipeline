@@ -1,4 +1,16 @@
-# ExternalAssetPipeline Demo with Gulp and Webpack replacing Sprockets
+# ExternalAssetPipeline Demo with Gulp and Webpack reading from two manifests
+
+This example is the same as [`demo_app-gulp`](../demo_app-gulp) but showcasing
+how you can assemble a more complex integration with the ExternalAssetPipeline.
+This app integrates with two separate JSON manifests (`gulp-manifest.json`, for
+the `gulp`-compiled assets, and `webpack-manifest.json`, for the
+`webpack`-compiled assets). To achieve this, the app instantiates its own
+`ExternalAssetPipeline::Manifest` instances corresponding to each JSON file and
+combines them using the `ExternalAssetPipeline::PriorityManifest`. Finally, it
+overrides the `external_asset_pipeline_manifest` helper method to reference this
+custom manifest instance. See [this commit] for details.
+
+[this commit]: https://github.com/rails-front-end/external_asset_pipeline/commit/defd5e93c73ef67a3df9f3f386031a38ba29520f
 
 This example uses [`gulp`] with [`gulp-rev`] and [`webpack`] with
 [`webpack-assets-manifest`] to build the assets and generate the manifest. Refer
