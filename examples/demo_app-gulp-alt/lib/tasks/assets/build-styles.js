@@ -12,7 +12,7 @@ const FILES = ['app/assets/stylesheets/packs/**/*'];
 const ADDITIONAL_WATCH_FILES = ['app/assets/stylesheets/**/*', `!${FILES[0]}`];
 
 const buildStyles = gulp.series(buildImagesTask, function buildStyles() {
-  const manifest = gulp.src('public/packs/manifest.json');
+  const manifest = gulp.src('public/packs/gulp-manifest.json');
 
   return revisionAsset(
     gulp.src(FILES, { sourcemaps: true })

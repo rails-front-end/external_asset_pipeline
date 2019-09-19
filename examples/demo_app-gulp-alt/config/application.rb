@@ -21,6 +21,10 @@ require 'external_asset_pipeline/railtie'
 Bundler.require(*Rails.groups)
 
 module DemoApp
+  class << self
+    attr_accessor :external_asset_pipeline_manifest
+  end
+
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0

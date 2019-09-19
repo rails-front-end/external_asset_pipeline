@@ -9,7 +9,7 @@ function revisionAsset(input, sourcemapOptions) {
       .pipe(rev.manifest({
         base: 'public/packs',
         merge: true,
-        path: 'public/packs/manifest.json'
+        path: 'public/packs/gulp-manifest.json'
       }))
       .pipe(gulp.dest('public/packs'))
   );
