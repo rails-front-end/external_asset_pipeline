@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.0
+
+Default `dev_server.host` setting to `'localhost'` and `dev_server.port` setting
+to `3035`. This means there is less to configure in apps which align with these
+conventions.
+
 ## 0.5.0
 
 Add `external_asset_pipeline_manifest` helper method which can be overridden to
