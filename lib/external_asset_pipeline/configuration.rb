@@ -25,6 +25,8 @@ module ExternalAssetPipeline
 
       def initialize
         @connect_timeout = 0.01
+        @host = 'localhost'
+        @port = 3035
       end
     end
 

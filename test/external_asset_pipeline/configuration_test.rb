@@ -46,21 +46,21 @@ module ExternalAssetPipeline
 
       assert_equal 0.01, config.dev_server.connect_timeout
       assert_nil config.dev_server.enabled
-      assert_nil config.dev_server.host
-      assert_nil config.dev_server.port
+      assert_equal 'localhost', config.dev_server.host
+      assert_equal 3035, config.dev_server.port
       assert_nil config.dev_server.public_origin
 
       config.configure do |c|
         c.dev_server.connect_timeout = 0.5
         c.dev_server.enabled = true
-        c.dev_server.host = 'localhost'
+        c.dev_server.host = 'assets.localhost'
         c.dev_server.port = 9000
         c.dev_server.public_origin = 'http://example-app.test'
       end
 
       assert_equal 0.5, config.dev_server.connect_timeout
       assert_equal true, config.dev_server.enabled
-      assert_equal 'localhost', config.dev_server.host
+      assert_equal 'assets.localhost', config.dev_server.host
       assert_equal 9000, config.dev_server.port
       assert_equal 'http://example-app.test', config.dev_server.public_origin
     end
