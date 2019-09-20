@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0
+
+Add `external_asset_pipeline_manifest` helper method which can be overridden to
+return a different `Manifest` instance than the default. One example use case
+would be to override this helper in different rails engines to use a distinct
+`Manifest` instance in each one.
+
 ## 0.4.0
 
 Add `prepend_assets_prefix_to_manifest_values` setting to support manifests
