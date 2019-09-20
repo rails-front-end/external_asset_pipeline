@@ -134,17 +134,28 @@ like `/packs//packs/application-2ea8c3891d.css`).
 ### Using with a dev server
 
 You may also connect the `external_asset_pipeline` to a dev server (e.g.
-[`webpack-dev-server`]). To do so, configure the corresponding `dev_server`
-settings:
+[`webpack-dev-server`]). To do so, enable the `dev_server` in the relevant
+environments:
 
 ```ruby
 config.external_asset_pipeline.dev_server.enabled = true
-config.external_asset_pipeline.dev_server.host = 'localhost'
+```
+
+You may also optionally configure the `dev_server` `host` and `port` (their
+default values are `'localhost'` and `3035`, respectively):
+
+```ruby
+config.external_asset_pipeline.dev_server.host = 'dev-server'
 config.external_asset_pipeline.dev_server.port = 9000
 ```
 
-You may _optionally_ also configure the `dev_server.public_origin` setting,
-which will be used to generate the URLs in your asset tags. If this isn't set,
+Finally, you may optionally configure the `dev_server.public_origin` setting:
+
+```ruby
+config.external_asset_pipeline.dev_server.public_origin = 'http://localhost:9000'
+```
+
+This will be used to generate the URLs in your asset tags. If this isn't set,
 the asset origin defaults to `"http://#{dev_server.host}:#{dev_server.port}"`,
 so `public_origin` only needs to be set if that default doesn't work <sup>1</sup>.
 
