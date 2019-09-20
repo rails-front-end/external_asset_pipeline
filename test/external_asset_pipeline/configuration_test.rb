@@ -47,7 +47,7 @@ module ExternalAssetPipeline
       assert_equal 0.01, config.dev_server.connect_timeout
       assert_nil config.dev_server.enabled
       assert_equal 'localhost', config.dev_server.host
-      assert_nil config.dev_server.port
+      assert_equal 3035, config.dev_server.port
       assert_nil config.dev_server.public_origin
 
       config.configure do |c|
