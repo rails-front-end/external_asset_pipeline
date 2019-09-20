@@ -9,7 +9,7 @@ class ExternalAssetPipelineIntegrationTest < ActionDispatch::IntegrationTest
     assert_response :ok
 
     manifest_hash =
-      JSON.parse(Rails.root.join('public', 'packs', 'manifest.json').read)
+      JSON.parse(Rails.root.join('public', 'packs', manifest_filename).read)
     script_path = "/packs/#{manifest_hash['application.js']}"
 
     assert_select 'script' do |elements|
@@ -57,6 +57,14 @@ class ExternalAssetPipelineIntegrationTest < ActionDispatch::IntegrationTest
 
   def app_has_dev_server_enabled?
     Rails.application.config.external_asset_pipeline.dev_server.enabled
+  end
+
+  def manifest_filename
+    if Rails.root.to_s.include?('demo_app-gulp-alt')
+      'webpack-manifest.json'
+    else
+      'manifest.json'
+    end
   end
 
   def stylesheet_href_matcher

@@ -15,6 +15,9 @@ javascript assets while `sprockets` handles other assets
 manage all assets without `sprockets`
 - [examples/demo_app-gulp](./examples/demo_app-gulp) uses [`gulp`] in addition
 to `webpack` to manage all assets without `sprockets`
+  - [examples/demo_app-gulp-alt](./examples/demo_app-gulp-alt) is the same app
+  but showcasing a more complex integration, reading from two separate JSON
+  manifest files
 - [examples/demo_app-rollup](./examples/demo_app-rollup) uses [`rollup`] instead
 of `webpack` to process javascript assets
 

@@ -70,6 +70,11 @@ workflows:
       - test:
           executor: ruby_2_5_5_executor
           example_app: demo_app-gulp
+  test_ruby_2_5_gulp_alt:
+    jobs:
+      - test:
+          executor: ruby_2_5_5_executor
+          example_app: demo_app-gulp-alt
   test_ruby_2_5_rails5:
     jobs:
       - test:
@@ -94,6 +99,11 @@ workflows:
       - test:
           executor: ruby_2_6_3_executor
           example_app: demo_app-gulp
+  test_ruby_2_6_gulp_alt:
+    jobs:
+      - test:
+          executor: ruby_2_6_3_executor
+          example_app: demo_app-gulp-alt
   test_ruby_2_6_rails5:
     jobs:
       - test:
