@@ -57,7 +57,6 @@ Rails.application.configure do
 
   # Enable the external asset pipeline dev server.
   config.external_asset_pipeline.dev_server.enabled = true
-  config.external_asset_pipeline.dev_server.host = 'localhost'
   config.external_asset_pipeline.dev_server.port = 9000
 
   # Raises error for missing translations
