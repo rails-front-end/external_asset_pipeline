@@ -11,8 +11,12 @@ class ExternalAssetPipelineTest < Minitest::Test
     refute_nil ::ExternalAssetPipeline::VERSION::PATCH
     assert_kind_of Integer, ::ExternalAssetPipeline::VERSION::PATCH
 
-    refute_nil ::ExternalAssetPipeline::VERSION::STRING
-    assert_kind_of String, ::ExternalAssetPipeline::VERSION::STRING
+    version_string = [
+      ::ExternalAssetPipeline::VERSION::MAJOR,
+      ::ExternalAssetPipeline::VERSION::MINOR,
+      ::ExternalAssetPipeline::VERSION::PATCH
+    ].join('.')
+    assert_equal version_string, ::ExternalAssetPipeline::VERSION::STRING
   end
 
   def test_that_manifest_can_be_set
