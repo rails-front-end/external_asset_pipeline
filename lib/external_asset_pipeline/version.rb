@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
 module ExternalAssetPipeline
-  VERSION = '0.6.0'
+  module VERSION
+    MAJOR = 0
+    MINOR = 6
+    PATCH = 0
+
+    STRING = [MAJOR, MINOR, PATCH].join('.')
+  end
 end
