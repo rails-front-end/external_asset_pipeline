@@ -6,7 +6,7 @@ require 'external_asset_pipeline/version'
 
 Gem::Specification.new do |s|
   s.name     = 'external_asset_pipeline'
-  s.version  = ExternalAssetPipeline::VERSION
+  s.version  = ExternalAssetPipeline::VERSION::STRING
   s.authors  = ['Richard Macklin']
   s.email    = ['1863540+rmacklin@users.noreply.github.com']
   s.homepage = 'https://github.com/rails-front-end/external_asset_pipeline'
@@ -23,9 +23,9 @@ Gem::Specification.new do |s|
 
   s.metadata['homepage_uri'] = s.homepage
   s.metadata['source_code_uri'] =
-    "#{s.homepage}/tree/v#{ExternalAssetPipeline::VERSION}"
+    "#{s.homepage}/tree/v#{ExternalAssetPipeline::VERSION::STRING}"
   s.metadata['changelog_uri'] =
-    "#{s.homepage}/blob/v#{ExternalAssetPipeline::VERSION}/CHANGELOG.md"
+    "#{s.homepage}/blob/v#{ExternalAssetPipeline::VERSION::STRING}/CHANGELOG.md"
 
   s.files = Dir['{lib}/**/*']
   s.require_paths = ['lib']

@@ -4,7 +4,8 @@ require 'test_helper'
 
 class ExternalAssetPipelineTest < Minitest::Test
   def test_that_it_has_a_version_number
-    refute_nil ::ExternalAssetPipeline::VERSION
+    refute_nil ::ExternalAssetPipeline::VERSION::STRING
+    assert_kind_of String, ::ExternalAssetPipeline::VERSION::STRING
   end
 
   def test_that_manifest_can_be_set
