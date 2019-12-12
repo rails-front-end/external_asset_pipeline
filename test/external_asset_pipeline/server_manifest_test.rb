@@ -3,6 +3,7 @@
 require 'test_helper'
 
 require 'external_asset_pipeline/configuration'
+require 'external_asset_pipeline/logger_double'
 require 'external_asset_pipeline/server_double'
 require 'external_asset_pipeline/server_manifest'
 require 'json'
@@ -48,15 +49,6 @@ module ExternalAssetPipeline
       assert_nil manifest.find('missing-asset.css')
       assert_equal [expected_log_warning] * 3, @config.logger.messages
       assert_equal '/packs/manifest.json', server_stub.path
-    end
-
-    class LoggerDouble
-      attr_reader :messages
-
-      def warn(message)
-        @messages ||= []
-        @messages << message
-      end
     end
   end
 end
