@@ -3,6 +3,7 @@
 require 'test_helper'
 
 require 'external_asset_pipeline/configuration'
+require 'external_asset_pipeline/logger_double'
 require 'external_asset_pipeline/manifest'
 
 module ExternalAssetPipeline
@@ -50,9 +51,14 @@ module ExternalAssetPipeline
       config = Configuration.new
       config.public_path = Pathname.new(TEST_APP_PUBLIC_PATH)
       config.manifest_filename = 'bogus_manifest.json'
+      config.logger = LoggerDouble.new
 
       manifest = Manifest.new(config)
       assert_nil manifest.find 'application.js'
+
+      expected_log_warning = "No file exists at path #{config.manifest_path}; "\
+        'treating it as an empty manifest'
+      assert_equal [expected_log_warning], config.logger.messages
     end
 
     def test_manifest_caching
