@@ -46,6 +46,15 @@ module ExternalAssetPipeline
       assert_nil manifest.find('missing-asset.css')
     end
 
+    def test_find_when_manifest_file_does_not_exist
+      config = Configuration.new
+      config.public_path = Pathname.new(TEST_APP_PUBLIC_PATH)
+      config.manifest_filename = 'bogus_manifest.json'
+
+      manifest = Manifest.new(config)
+      assert_nil manifest.find 'application.js'
+    end
+
     def test_manifest_caching
       config = Configuration.new
       config.public_path = Pathname.new(TEST_APP_PUBLIC_PATH)

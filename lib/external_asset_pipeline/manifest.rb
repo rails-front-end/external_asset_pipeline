@@ -29,6 +29,8 @@ module ExternalAssetPipeline
 
     def load
       JSON.parse(@config.manifest_path.read)
+    rescue Errno::ENOENT
+      {}
     end
   end
 end
