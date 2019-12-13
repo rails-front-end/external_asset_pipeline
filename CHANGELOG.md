@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.0
+
+Consider manifest to be empty if the corresponding manifest file does not exist.
+
+Add `ExternalAssetPipeline::VERSION::MAJOR`,
+`ExternalAssetPipeline::VERSION::MINOR`, and
+`ExternalAssetPipeline::VERSION::PATCH` constants and rename
+`ExternalAssetPipeline::VERSION` to `ExternalAssetPipeline::VERSION::STRING`.
+
 ## 0.6.0
 
 Default `dev_server.host` setting to `'localhost'` and `dev_server.port` setting
