@@ -29,6 +29,11 @@ module ExternalAssetPipeline
 
     def load
       JSON.parse(@config.manifest_path.read)
+    rescue Errno::ENOENT
+      warning = "No file exists at path #{@config.manifest_path}; "\
+        'treating it as an empty manifest'
+      @config.logger.warn warning
+      {}
     end
   end
 end
