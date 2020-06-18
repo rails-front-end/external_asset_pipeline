@@ -97,11 +97,11 @@ module ExternalAssetPipeline
     private
 
     def modify_application_js_fingerprint(manifest_path)
-      `sed -i'.bak' -e 's/7b3dc2436f7956c77987/22222222222222222222/g' #{manifest_path}` # rubocop:disable Metrics/LineLength
+      `sed -i'.bak' -e 's/7b3dc2436f7956c77987/22222222222222222222/g' #{manifest_path}` # rubocop:disable Layout/LineLength
     end
 
     def revert_application_js_fingerprint(manifest_path)
-      `sed -i'.bak' -e 's/22222222222222222222/7b3dc2436f7956c77987/g' #{manifest_path}` # rubocop:disable Metrics/LineLength
+      `sed -i'.bak' -e 's/22222222222222222222/7b3dc2436f7956c77987/g' #{manifest_path}` # rubocop:disable Layout/LineLength
       `rm #{manifest_path}.bak`
     end
   end
