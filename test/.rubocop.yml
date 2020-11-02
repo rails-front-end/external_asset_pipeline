@@ -1,7 +1,7 @@
 inherit_from: ../.rubocop.yml
 
 Metrics/AbcSize:
-  Max: 40
+  Max: 45
 
 Metrics/MethodLength:
   Max: 25
