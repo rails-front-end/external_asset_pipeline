@@ -67,7 +67,7 @@ module ExternalAssetPipeline
 
     def test_logger
       config = Configuration.new
-      new_logger = Logger.new(STDERR)
+      new_logger = Logger.new($stderr)
 
       assert_instance_of Logger, config.logger
       refute_equal new_logger, config.logger

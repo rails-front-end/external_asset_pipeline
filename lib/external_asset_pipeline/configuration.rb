@@ -35,7 +35,7 @@ module ExternalAssetPipeline
       @cache_manifest = true
       @dev_server = DevServerSettings.new
       @fall_back_to_sprockets = false
-      @logger = Logger.new(STDOUT)
+      @logger = Logger.new($stdout)
       @manifest_filename = 'manifest.json'
       @prepend_assets_prefix_to_manifest_values = true
     end
