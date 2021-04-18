@@ -57,4 +57,10 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  # Enable the external asset pipeline dev server.
+  config.external_asset_pipeline.dev_server.enabled = true
+  config.external_asset_pipeline.dev_server.host = ENV['DEV_SERVER_HOST'] || 'localhost'
+  config.external_asset_pipeline.dev_server.port = 9000
+  config.external_asset_pipeline.logger = Logger.new(nil)
 end
