@@ -6,5 +6,7 @@
     "@rails/ujs": "^6.0.0",
     "turbolinks": "^5.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack": "^4.46.0"
+  }
 }
