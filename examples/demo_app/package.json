@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
     "glob": "^7.1.6",
     "webpack": "^4.46.0",
     "webpack-assets-manifest": "^4.0.5",
