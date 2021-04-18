@@ -15,5 +15,9 @@
     "webpack-assets-manifest": "^4.0.5",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
   }
 }
