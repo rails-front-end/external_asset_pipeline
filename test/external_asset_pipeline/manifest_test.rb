@@ -57,7 +57,7 @@ module ExternalAssetPipeline
       assert_nil manifest.find 'application.js'
 
       expected_log_warning = "No file exists at path #{config.manifest_path}; "\
-        'treating it as an empty manifest'
+                             'treating it as an empty manifest'
       assert_equal [expected_log_warning], config.logger.messages
     end
 
