@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     (e.g. `asset_path`, `javascript_include_tag`, etc.)
   TEXT
 
+  s.metadata['rubygems_mfa_required'] = 'true'
   s.metadata['homepage_uri'] = s.homepage
   s.metadata['source_code_uri'] =
     "#{s.homepage}/tree/v#{ExternalAssetPipeline::VERSION::STRING}"
