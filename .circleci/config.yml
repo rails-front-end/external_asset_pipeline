@@ -17,7 +17,7 @@ jobs:
       example_app:
         description: The example app to use for the integration tests
         type: string
-        default: demo_app
+        default: demo_app-rails6
       include_linting:
         description: Whether or not to run the linter in addition to the tests
         type: boolean

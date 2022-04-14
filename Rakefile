@@ -12,7 +12,7 @@ class ExampleAppCommand
 
   def initialize(command)
     @command = command
-    example_app = ENV['EXAMPLE_APP'] || 'demo_app'
+    example_app = ENV['EXAMPLE_APP'] || 'demo_app-rails6'
     @example_app_path = File.expand_path("./examples/#{example_app}", __dir__)
     @gemfile_path = File.join(@example_app_path, 'Gemfile')
   end
