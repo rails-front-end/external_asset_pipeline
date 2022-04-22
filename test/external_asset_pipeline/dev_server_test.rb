@@ -13,7 +13,7 @@ module ExternalAssetPipeline
   class DevServerTest < Minitest::Test
     def test_get
       config = Configuration::DevServerSettings.new
-      config.host = ENV['DEV_SERVER_HOST'] || 'localhost'
+      config.host = ENV.fetch('DEV_SERVER_HOST', 'localhost')
       config.port = 9555
 
       dev_server = DevServer.new(config)
@@ -29,7 +29,7 @@ module ExternalAssetPipeline
 
     def test_origin
       config = Configuration::DevServerSettings.new
-      config.host = ENV['DEV_SERVER_HOST'] || 'localhost'
+      config.host = ENV.fetch('DEV_SERVER_HOST', 'localhost')
       config.port = 9666
 
       dev_server = DevServer.new(config)
@@ -47,7 +47,7 @@ module ExternalAssetPipeline
 
     def test_running
       config = Configuration::DevServerSettings.new
-      config.host = ENV['DEV_SERVER_HOST'] || 'localhost'
+      config.host = ENV.fetch('DEV_SERVER_HOST', 'localhost')
       config.port = 9777
 
       dev_server = DevServer.new(config)
