@@ -45,7 +45,7 @@ Or install it yourself as:
 
 ## Usage
 
-In `config/application.rb`, inside the `class Application < Rails::Application>`, add:
+In `config/application.rb`, after the code that `require`s rails, add:
 
 ```ruby
 require 'external_asset_pipeline/railtie'

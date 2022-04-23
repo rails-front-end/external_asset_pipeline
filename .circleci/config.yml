@@ -7,9 +7,6 @@ executors:
   ruby_2_6_3_executor:
     docker:
       - image: circleci/ruby:2.6.3-node
-  ruby_2_7_6_executor:
-    docker:
-      - image: circleci/ruby:2.7.6-node
 
 jobs:
   test:
@@ -20,7 +17,7 @@ jobs:
       example_app:
         description: The example app to use for the integration tests
         type: string
-        default: demo_app-rails7
+        default: demo_app
       include_linting:
         description: Whether or not to run the linter in addition to the tests
         type: boolean
@@ -58,6 +55,11 @@ jobs:
       - run: script/test <<# parameters.include_linting >>&& script/lint<</ parameters.include_linting >>
 
 workflows:
+  test_ruby_2_5:
+    jobs:
+      - test:
+          executor: ruby_2_5_5_executor
+          include_linting: true
   test_ruby_2_5_brunch:
     jobs:
       - test:
@@ -73,27 +75,20 @@ workflows:
       - test:
           executor: ruby_2_5_5_executor
           example_app: demo_app-gulp-alt
-  test_ruby_2_7_rails6:
-    jobs:
-      - test:
-          executor: ruby_2_5_5_executor
-          example_app: demo_app-rails5
   test_ruby_2_5_rails5:
     jobs:
       - test:
           executor: ruby_2_5_5_executor
-          example_app: demo_app-rails5
-  test_ruby_2_5_rails6:
-    jobs:
-      - test:
-          executor: ruby_2_5_5_executor
-          include_linting: true
           example_app: demo_app-rails5
   test_ruby_2_5_rollup:
     jobs:
       - test:
           executor: ruby_2_5_5_executor
           example_app: demo_app-rollup
+  test_ruby_2_6:
+    jobs:
+      - test:
+          executor: ruby_2_6_3_executor
   test_ruby_2_6_brunch:
     jobs:
       - test:
@@ -114,47 +109,8 @@ workflows:
       - test:
           executor: ruby_2_6_3_executor
           example_app: demo_app-rails5
-  test_ruby_2_6_rails6:
-    jobs:
-      - test:
-          executor: ruby_2_6_3_executor
-          example_app: demo_app-rails6
   test_ruby_2_6_rollup:
     jobs:
       - test:
           executor: ruby_2_6_3_executor
-          example_app: demo_app-rollup
-  test_ruby_2_7:
-    jobs:
-      - test:
-          executor: ruby_2_7_6_executor
-  test_ruby_2_7_brunch:
-    jobs:
-      - test:
-          executor: ruby_2_7_6_executor
-          example_app: demo_app-brunch
-  test_ruby_2_7_gulp:
-    jobs:
-      - test:
-          executor: ruby_2_7_6_executor
-          example_app: demo_app-gulp
-  test_ruby_2_7_gulp_alt:
-    jobs:
-      - test:
-          executor: ruby_2_7_6_executor
-          example_app: demo_app-gulp-alt
-  test_ruby_2_7_rails5:
-    jobs:
-      - test:
-          executor: ruby_2_7_6_executor
-          example_app: demo_app-rails5
-  test_ruby_2_7_rails6:
-    jobs:
-      - test:
-          executor: ruby_2_7_6_executor
-          example_app: demo_app-rails6
-  test_ruby_2_7_rollup:
-    jobs:
-      - test:
-          executor: ruby_2_7_6_executor
           example_app: demo_app-rollup

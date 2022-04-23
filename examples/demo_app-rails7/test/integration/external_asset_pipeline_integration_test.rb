@@ -1,1 +1,0 @@
-../../../../test/integration/external_asset_pipeline_integration_test.rb
