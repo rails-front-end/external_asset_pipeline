@@ -10,7 +10,7 @@ don't hesitate to check out some demo apps:
 - [examples/demo_app](./examples/demo_app) uses [`webpack`] to process
 javascript assets while `sprockets` handles other assets
   - [examples/demo_app-rails5](./examples/demo_app-rails5) is the same app but
-    using rails 5 instead of rails 6 (`external_asset_pipeline` supports both)
+    using rails 5 (`external_asset_pipeline` supports rails >= 5)
 - [examples/demo_app-brunch](./examples/demo_app-brunch) uses [`brunch`] to
 manage all assets without `sprockets`
 - [examples/demo_app-gulp](./examples/demo_app-gulp) uses [`gulp`] in addition
@@ -38,10 +38,6 @@ gem 'external_asset_pipeline'
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install external_asset_pipeline
 
 ## Usage
 
@@ -175,9 +171,14 @@ container.</sup>
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run
-`rake test` to run the tests. You can also run `bin/console` for an interactive
-prompt that will allow you to experiment.
+After checking out the repo, run `script/bootstrap` to install dependencies.
+Then, run `bundle exec rake test:integration:prepare` to set up the integration
+test environment and run `script/test` to run the tests. By default, that will
+exercise the `demo_app` example application. To exercise a different example
+application, set the `EXAMPLE_APP` environment variable to the corresponding
+directory name (e.g. `EXAMPLE_APP=demo_app-rollup`). To lint the code, run
+`script/lint`. You can also run `script/console` for an interactive prompt that
+will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To
 release a new version, update the version number in `version.rb`, and then run
