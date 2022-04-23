@@ -2,11 +2,11 @@ require_relative 'boot'
 
 require 'rails/all'
 
-require 'external_asset_pipeline/railtie'
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+
+require 'external_asset_pipeline/railtie'
 
 module DemoApp
   class Application < Rails::Application
