@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.8.0
+
+Support Rails 7.
+
+Note: Sprockets is no longer an explicit dependency in Rails 7, so if your
+application still uses Sprockets (or Propshaft) then that railtie will now be
+loaded by `Bundler.require(*Rails.groups)` in `config/application.rb` (rather
+than by `require "rails/all"`). As a result, it's important to place the
+`require "external_asset_pipeline/railtie"` line **after**
+`Bundler.require(*Rails.groups)` to ensure that ExternalAssetPipeline takes
+precedence over Sprockets (or Propshaft).
+
 ## 0.7.0
 
 Consider manifest to be empty if the corresponding manifest file does not exist.
