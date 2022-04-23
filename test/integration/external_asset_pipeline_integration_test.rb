@@ -26,7 +26,7 @@ class ExternalAssetPipelineIntegrationTest < ActionDispatch::IntegrationTest
 
     Rails.application.config.external_asset_pipeline.cache_manifest = false
     dev_server_thread = create_server_thread(9000)
-    dev_server_host = ENV['DEV_SERVER_HOST'] || 'localhost'
+    dev_server_host = ENV.fetch('DEV_SERVER_HOST', 'localhost')
     wait_for_server(dev_server_host, 9000)
 
     get root_url
