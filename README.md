@@ -39,10 +39,6 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install external_asset_pipeline
-
 ## Usage
 
 In `config/application.rb`, after `Bundler.require(*Rails.groups)`, add:
