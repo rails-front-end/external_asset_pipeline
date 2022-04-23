@@ -16,6 +16,9 @@
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0"
   },
+  "resolutions": {
+    "sockjs-client": "1.5.2"
+  },
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch"
