@@ -12,7 +12,7 @@ class ExampleAppCommand
 
   def initialize(command)
     @command = command
-    example_app = ENV['EXAMPLE_APP'] || 'demo_app'
+    example_app = ENV.fetch('EXAMPLE_APP', 'demo_app')
     @example_app_path = File.expand_path("./examples/#{example_app}", __dir__)
     @gemfile_path = File.join(@example_app_path, 'Gemfile')
   end
@@ -55,7 +55,7 @@ namespace :test do
   namespace :integration do
     desc 'Resolve and install dependencies and build assets in example app'
     task :prepare do
-      bundle_args = ENV['INTEGRATION_BUNDLE_ARGS']
+      bundle_args = ENV.fetch('INTEGRATION_BUNDLE_ARGS', '')
       ExampleAppCommand.run(
         "bundle check #{bundle_args} || bundle install #{bundle_args}"
       )
