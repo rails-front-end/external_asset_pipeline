@@ -10,7 +10,7 @@ don't hesitate to check out some demo apps:
 - [examples/demo_app](./examples/demo_app) uses [`webpack`] to process
 javascript assets while `sprockets` handles other assets
   - [examples/demo_app-rails5](./examples/demo_app-rails5) is the same app but
-    using rails 5 instead of rails 6 (`external_asset_pipeline` supports both)
+    using rails 5 (`external_asset_pipeline` supports rails >= 5)
 - [examples/demo_app-brunch](./examples/demo_app-brunch) uses [`brunch`] to
 manage all assets without `sprockets`
 - [examples/demo_app-gulp](./examples/demo_app-gulp) uses [`gulp`] in addition
