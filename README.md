@@ -176,8 +176,9 @@ Then, run `bundle exec rake test:integration:prepare` to set up the integration
 test environment and run `script/test` to run the tests. By default, that will
 exercise the `demo_app` example application. To exercise a different example
 application, set the `EXAMPLE_APP` environment variable to the corresponding
-directory name (e.g. `EXAMPLE_APP=demo_app-rollup`). You can also run
-`script/console` for an interactive prompt that will allow you to experiment.
+directory name (e.g. `EXAMPLE_APP=demo_app-rollup`). To lint the code, run
+`script/lint`. You can also run `script/console` for an interactive prompt that
+will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To
 release a new version, update the version number in `version.rb`, and then run
